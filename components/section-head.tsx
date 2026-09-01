@@ -24,7 +24,7 @@ export function SectionHead({
       <Reveal
         delay={0.05}
         as="h2"
-        className="mt-6 max-w-[16ch] font-display text-[clamp(2rem,4.6vw,3.5rem)] leading-[1.02] tracking-[-0.025em]"
+        className="mt-6 max-w-[18ch] font-display text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.04] tracking-[-0.025em]"
       >
         {title}
       </Reveal>

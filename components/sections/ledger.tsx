@@ -9,8 +9,8 @@ const total = payouts.reduce((sum, p) => sum + p.amount, 0);
 
 export function Ledger() {
   return (
-    <section id="ledger" className="shell scroll-mt-24 py-24 md:py-36">
-      <div className="flex flex-wrap items-end justify-between gap-8">
+    <section id="ledger" className="shell scroll-mt-24 py-24 md:py-32">
+      <div className="flex flex-wrap items-end justify-between gap-y-8 md:gap-8">
         <SectionHead
           index="03"
           label="Paid out"
@@ -23,7 +23,7 @@ export function Ledger() {
           }
         />
 
-        <Reveal delay={0.1} className="text-right">
+        <Reveal delay={0.1} className="w-full text-left md:w-auto md:text-right">
           <div className="font-display text-[clamp(2.5rem,6vw,4rem)] leading-none tracking-tight">
             <CountUp to={total} prefix="$" decimals={2} className="tnum" />
           </div>
@@ -33,7 +33,7 @@ export function Ledger() {
         </Reveal>
       </div>
 
-      <Reveal delay={0.1} className="mt-12 border-t border-line">
+      <Reveal delay={0.1} className="mt-10 border-t border-line">
         <table className="w-full border-collapse text-left">
           <caption className="sr-only">
             Recent clip payments, with a link to each transaction on the {site.chain} explorer.
@@ -66,7 +66,7 @@ export function Ledger() {
                 <td className="hidden font-mono text-xs text-bone-dim tnum md:table-cell md:py-5">
                   {p.seconds}s
                 </td>
-                <td className="mt-1 block font-mono text-sm text-bone tnum md:table-cell md:py-5">
+                <td className="mt-2 block font-mono text-base text-bone tnum md:mt-0 md:table-cell md:py-5 md:text-sm">
                   ${p.amount.toFixed(2)}
                 </td>
                 <td className="mt-1 block font-mono text-xs text-bone-faint md:table-cell md:py-5">

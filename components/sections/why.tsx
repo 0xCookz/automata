@@ -5,7 +5,7 @@ import { principles } from "@/lib/site";
 
 export function Why() {
   return (
-    <section id="why" className="scroll-mt-24 border-t border-line bg-ink-raised py-24 md:py-36">
+    <section id="why" className="scroll-mt-24 border-t border-line bg-ink-raised py-24 md:py-32">
       <div className="shell">
         <SectionHead
           index="02"
@@ -27,7 +27,7 @@ export function Why() {
           className="max-w-4xl"
         />
 
-        <div className="mt-16 grid grid-cols-12 gap-y-12 lg:gap-x-12">
+        <div className="mt-14 grid grid-cols-12 gap-y-12 lg:gap-x-12">
           <Reveal className="col-span-12 lg:col-span-5">
             <AnnotatedFrame />
           </Reveal>

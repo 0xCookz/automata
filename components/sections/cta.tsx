@@ -6,7 +6,7 @@ export function Cta() {
   return (
     <section
       id="record"
-      className="relative scroll-mt-24 overflow-hidden border-t border-line bg-ink-raised py-28 md:py-40"
+      className="relative scroll-mt-24 overflow-hidden border-t border-line bg-ink-raised py-24 md:py-36"
     >
       <div
         aria-hidden
@@ -40,7 +40,7 @@ export function Cta() {
           <a
             href="#top"
             data-cta="record"
-            className="group inline-flex h-14 items-center gap-3 bg-signal px-9 font-mono text-[11px] uppercase tracking-[0.18em] text-ink transition-colors duration-200 hover:bg-bone"
+            className="group inline-flex h-14 w-full items-center justify-center gap-3 bg-signal px-9 sm:w-auto font-mono text-[11px] uppercase tracking-[0.18em] text-ink transition-colors duration-200 hover:bg-bone"
           >
             Record your first clip
             <svg width="15" height="10" viewBox="0 0 14 10" fill="none" aria-hidden>

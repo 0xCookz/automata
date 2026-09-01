@@ -407,6 +407,9 @@ function RobotPrototype({
       config.moveSpeed * dt,
     );
 
+    // a slow idle bob keeps it alive when the cursor is not moving
+    bodyRef.current.position.y = -0.3 + Math.sin(state.clock.elapsedTime * 0.9) * 0.022;
+
     const relativeX = tx - bodyRef.current.position.x / 2.5;
 
     bodyRef.current.rotation.y = THREE.MathUtils.lerp(

@@ -13,7 +13,7 @@ export function Pay() {
   const progress = ((seconds - pay.min) / (pay.max - pay.min)) * 100;
 
   return (
-    <section id="pay" className="scroll-mt-24 border-y border-line bg-ink-raised py-24 md:py-36">
+    <section id="pay" className="scroll-mt-24 border-y border-line bg-ink-raised py-24 md:py-32">
       <div className="shell grid grid-cols-12 gap-y-12 lg:gap-x-12">
         <div className="col-span-12 lg:col-span-5">
           <SectionHead
@@ -37,13 +37,13 @@ export function Pay() {
         </div>
 
         <div className="col-span-12 lg:col-span-7">
-          <Reveal className="border border-line bg-ink p-6 md:p-10">
+          <Reveal className="border border-line bg-ink p-5 sm:p-6 md:p-10">
             <div className="flex items-end justify-between gap-6">
               <div>
                 <div className="eyebrow">You would receive</div>
                 <output
                   htmlFor="clip-length"
-                  className="mt-3 block font-display text-[clamp(3rem,9vw,5.5rem)] leading-none tracking-[-0.03em] tnum"
+                  className="mt-3 block font-display text-[clamp(2.75rem,9vw,5rem)] leading-none tracking-[-0.03em] tnum"
                 >
                   ${amount.toFixed(2)}
                 </output>
@@ -84,7 +84,7 @@ export function Pay() {
                     key={t}
                     type="button"
                     onClick={() => setSeconds(t)}
-                    className="min-h-11 min-w-11 cursor-pointer transition-colors duration-200 hover:text-bone"
+                    className="min-h-11 flex-1 cursor-pointer transition-colors duration-200 first:text-left last:text-right hover:text-bone"
                     aria-label={`Set clip length to ${t} seconds`}
                   >
                     {t}s

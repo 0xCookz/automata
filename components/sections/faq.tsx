@@ -4,7 +4,7 @@ import { faqs } from "@/lib/site";
 
 export function Faq() {
   return (
-    <section id="faq" className="shell scroll-mt-24 py-24 md:py-36">
+    <section id="faq" className="shell scroll-mt-24 py-24 md:py-32">
       <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
         <div className="col-span-12 lg:col-span-4">
           <div className="lg:sticky lg:top-28">
@@ -17,7 +17,7 @@ export function Faq() {
             {faqs.map((f) => (
               <details key={f.q} name="faq" className="faq group border-b border-line">
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-6 md:py-7">
-                  <h3 className="max-w-[36ch] font-display text-xl tracking-tight md:text-[1.5rem]">
+                  <h3 className="max-w-[36ch] font-display text-[1.125rem] leading-snug tracking-tight sm:text-xl md:text-[1.5rem]">
                     {f.q}
                   </h3>
                   <span
