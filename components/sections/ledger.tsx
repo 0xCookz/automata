@@ -33,7 +33,7 @@ export function Ledger() {
         </Reveal>
       </div>
 
-      <Reveal delay={0.1} className="mt-10 border-t border-line">
+      <Reveal delay={0.1} className="cardable-panel mt-10 border-t border-line">
         <table className="w-full border-collapse text-left">
           <caption className="sr-only">
             Recent clip payments, with a link to each transaction on the {site.chain} explorer.

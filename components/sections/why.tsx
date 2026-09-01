@@ -33,9 +33,9 @@ export function Why() {
           </Reveal>
 
           <div className="col-span-12 lg:col-span-7">
-            <dl className="grid gap-px bg-line sm:grid-cols-2">
+            <dl className="cardable-grid grid gap-px bg-line sm:grid-cols-2">
               {principles.map((p) => (
-                <Reveal key={p.n} className="bg-ink-raised p-6 md:p-8">
+                <Reveal key={p.n} className="cardable bg-ink-raised p-6 md:p-8">
                   <dt className="flex items-baseline gap-3">
                     <span className="font-mono text-[11px] tracking-[0.2em] text-signal">
                       {p.n}

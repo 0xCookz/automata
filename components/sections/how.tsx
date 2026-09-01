@@ -30,7 +30,7 @@ export function How() {
 
         <ol className="col-span-12 lg:col-span-8">
           {steps.map((s) => (
-            <li key={s.n} className="border-t border-line last:border-b">
+            <li key={s.n} className="cardable border-t border-line last:border-b">
               <Reveal className="grid grid-cols-12 gap-x-6 gap-y-3 py-8 md:py-11">
                 <div className="col-span-12 flex items-baseline gap-4 md:col-span-8 md:gap-6">
                   <span className="font-display text-3xl leading-none text-signal md:text-5xl">

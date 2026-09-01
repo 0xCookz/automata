@@ -399,3 +399,21 @@ body::after {
   background-clip: text;
   color: transparent;
 }
+
+/* Bento pushes its card language through the shared sections too */
+[data-variant="bento"] .cardable {
+  border: 1px solid var(--glass-line) !important;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.012));
+  margin-bottom: 12px;
+  padding-inline: 22px;
+}
+[data-variant="bento"] .cardable-grid { background: transparent !important; gap: 12px; }
+[data-variant="bento"] .cardable-panel {
+  border: 1px solid var(--glass-line) !important;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
+  padding: 8px 22px 14px;
+}
+[data-variant="bento"] .cardable-panel table thead th { border-bottom-color: var(--line); }
+[data-variant="bento"] .cardable-panel tbody tr:last-child { border-bottom: 0; }
