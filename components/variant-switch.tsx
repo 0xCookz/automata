@@ -1,11 +1,11 @@
 import Link from "next/link";
 
 const options = [
-  { href: "/", label: "00 · archive" },
-  { href: "/hud", label: "A · machine vision" },
-  { href: "/paper", label: "B · field guide" },
-  { href: "/product", label: "C · product" },
   { href: "/tech", label: "D · instrument" },
+  { href: "/bento", label: "E · bento" },
+  { href: "/monolith", label: "F · monolith" },
+  { href: "/aurora", label: "G · aurora" },
+  { href: "/", label: "00 · archive" },
 ];
 
 /** Temporary chooser so the four directions can be compared side by side. */

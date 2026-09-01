@@ -313,3 +313,89 @@ body::after {
   background-clip: text;
   color: transparent;
 }
+
+/* E · Bento — same blue-black family, cold mint accent, everything in cards */
+[data-variant="bento"] {
+  --ink:        #08090c;
+  --ink-raised: #0c0e12;
+  --ink-card:   #101319;
+  --bone:       #e8ebf1;
+  --bone-dim:   #98a0af;
+  --bone-faint: #7a8291;
+  --line:       #1b1f27;
+  --line-soft:  #15181f;
+  --signal:     #35e0c5;
+  --glass-line: rgba(255, 255, 255, 0.08);
+  --font-display-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-sans-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+}
+[data-variant="bento"] h1,
+[data-variant="bento"] h2 { font-weight: 700; letter-spacing: -0.035em; }
+[data-variant="bento"] h3 { font-weight: 600; letter-spacing: -0.015em; }
+[data-variant="bento"] .panel {
+  border-color: var(--glass-line);
+  background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.012));
+  border-radius: 18px;
+  overflow: hidden;
+}
+[data-variant="bento"] ::selection { background: var(--signal); color: #08090c; }
+
+/* F · Monolith — pure black, no colour at all, one enormous voice */
+[data-variant="mono"] {
+  --ink:        #050505;
+  --ink-raised: #090909;
+  --ink-card:   #0d0d0d;
+  --bone:       #f4f3f1;
+  --bone-dim:   #9c9a97;
+  --bone-faint: #78766f;
+  --line:       #1c1c1c;
+  --line-soft:  #141414;
+  --signal:     #f4f3f1;
+  --font-display-family: "Cabinet Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
+}
+[data-variant="mono"] h1,
+[data-variant="mono"] h2,
+[data-variant="mono"] h3 { font-weight: 800; letter-spacing: -0.045em; }
+[data-variant="mono"] .panel { border-color: var(--line); background: var(--ink-raised); }
+[data-variant="mono"] ::selection { background: #f4f3f1; color: #050505; }
+.text-mercury {
+  background: linear-gradient(102deg, #ffffff 0%, #b9b6b0 38%, #ffffff 62%, #8d8a85 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* G · Aurora — mesh light behind heavy frosted glass */
+[data-variant="aurora"] {
+  --ink:        #070810;
+  --ink-raised: #0b0d17;
+  --ink-card:   #10131f;
+  --bone:       #eceefa;
+  --bone-dim:   #9ba2bd;
+  --bone-faint: #7d84a0;
+  --line:       #1c2032;
+  --line-soft:  #161a29;
+  --signal:     #7aa2ff;
+  --glass-line: rgba(255, 255, 255, 0.1);
+  --font-display-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  --font-sans-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
+}
+[data-variant="aurora"] h1,
+[data-variant="aurora"] h2 { font-weight: 700; letter-spacing: -0.04em; }
+[data-variant="aurora"] h3 { font-weight: 600; letter-spacing: -0.02em; }
+[data-variant="aurora"] .panel {
+  border-color: var(--glass-line);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border-radius: 22px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+}
+[data-variant="aurora"] ::selection { background: var(--signal); color: #070810; }
+.text-aurora {
+  background: linear-gradient(96deg, #ffffff 0%, #a8c3ff 40%, #7ff0e0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
