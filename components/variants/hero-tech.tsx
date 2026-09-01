@@ -10,13 +10,44 @@ const RobotStage = dynamic(
   { ssr: false },
 );
 
+export type HeroTechSkin = {
+  /** wide bloom behind the hero */
+  bloom: string;
+  /** glow inside the unit panel */
+  glow: string;
+  /** hairline the unit appears to stand on */
+  pedestal: string;
+  /** class applied to the accented words in the headline */
+  gradient: string;
+  robotColor: string;
+  robotScreen: string;
+  robotGlow: number;
+  robotRim: string;
+  /** primary button: filled accent, or bone on black */
+  ctaClass: string;
+};
+
+const blueSkin: HeroTechSkin = {
+  bloom:
+    "radial-gradient(50% 50% at 50% 50%, #3a56d8 0%, rgba(58,86,216,0.25) 45%, transparent 75%)",
+  glow: "radial-gradient(circle, #5d7dff 0%, transparent 70%)",
+  pedestal: "linear-gradient(90deg, transparent, rgba(93,125,255,0.65), transparent)",
+  gradient: "text-gradient",
+  robotColor: "#cdd4e4",
+  robotScreen: "#5d7dff",
+  robotGlow: 0.95,
+  robotRim: "#5d7dff",
+  ctaClass:
+    "bg-signal text-white shadow-[0_10px_30px_-10px_rgba(93,125,255,0.9)]",
+};
+
 const readouts = [
   ["status", "online"],
   ["queue", "6h 12m"],
   ["last payout", "$5.08"],
 ];
 
-export function HeroTech() {
+export function HeroTech({ skin = blueSkin }: { skin?: HeroTechSkin }) {
   return (
     <section id="top" className="relative overflow-hidden pt-24 md:pt-32">
       {/* engineering grid + a single cold bloom, both behind everything */}
@@ -24,10 +55,7 @@ export function HeroTech() {
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-[-12rem] h-[38rem] w-[64rem] -translate-x-1/2 opacity-45 blur-[130px]"
-        style={{
-          background:
-            "radial-gradient(50% 50% at 50% 50%, #3a56d8 0%, rgba(58,86,216,0.25) 45%, transparent 75%)",
-        }}
+        style={{ background: skin.bloom }}
       />
 
       <div className="shell relative">
@@ -51,7 +79,7 @@ export function HeroTech() {
                 <Fragment key="a">The data robots are</Fragment>,
                 <Fragment key="b">missing is sitting</Fragment>,
                 <Fragment key="c">
-                  in <span className="text-gradient">your kitchen</span>.
+                  in <span className={skin.gradient}>your kitchen</span>.
                 </Fragment>,
               ]}
             />
@@ -67,7 +95,7 @@ export function HeroTech() {
             <Reveal delay={0.42} stagger={0.08} className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href="#record"
-                className="group inline-flex h-12 items-center justify-center gap-2.5 rounded-xl bg-signal px-6 text-sm font-medium text-white shadow-[0_10px_30px_-10px_rgba(93,125,255,0.9)] transition-transform duration-200 hover:-translate-y-px"
+                className={`group inline-flex h-12 items-center justify-center gap-2.5 rounded-xl px-6 text-sm font-medium transition-transform duration-200 hover:-translate-y-px ${skin.ctaClass}`}
               >
                 Record a clip
                 <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden>
@@ -102,7 +130,7 @@ export function HeroTech() {
               <div
                 aria-hidden
                 className="pointer-events-none absolute left-1/2 top-1/3 h-56 w-56 -translate-x-1/2 rounded-full opacity-40 blur-[70px]"
-                style={{ background: "radial-gradient(circle, #5d7dff 0%, transparent 70%)" }}
+                style={{ background: skin.glow }}
               />
 
               <div className="relative flex items-center justify-between border-b border-line px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.16em] text-bone-faint">
@@ -117,18 +145,16 @@ export function HeroTech() {
                 <RobotStage
                   className="h-[17rem] w-full cursor-pointer sm:h-[20rem] lg:h-[23rem]"
                   scale={1.3}
-                  color="#cdd4e4"
-                  screenColor="#5d7dff"
-                  screenGlow={0.95}
+                  color={skin.robotColor}
+                  screenColor={skin.robotScreen}
+                  screenGlow={skin.robotGlow}
+                  rimColor={skin.robotRim}
                 />
                 {/* pedestal: a lit line the unit appears to sit on */}
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-x-10 bottom-8 h-px"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, transparent, rgba(93,125,255,0.65), transparent)",
-                  }}
+                  style={{ background: skin.pedestal }}
                 />
               </div>
 

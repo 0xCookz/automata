@@ -577,6 +577,8 @@ export interface RobotStageProps {
   screenGlow?: number;
   blinkCycle?: number;
   metalness?: number;
+  /** rim light colour — tie it to the page's accent, not the chassis. */
+  rimColor?: string;
   className?: string;
 }
 
@@ -587,6 +589,7 @@ export function RobotStage({
   screenGlow = 0.8,
   blinkCycle = 3.4,
   metalness = 0.0,
+  rimColor = "#ff5a2c",
   className,
 }: RobotStageProps) {
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -613,7 +616,7 @@ export function RobotStage({
         {/* key light, cool from above-left */}
         <directionalLight position={[-3, 5, 4]} intensity={1.35} color="#ffffff" />
         {/* signal rim from the right, ties the object to the palette */}
-        <directionalLight position={[5, 1.5, -2]} intensity={0.7} color="#ff5a2c" />
+        <directionalLight position={[5, 1.5, -2]} intensity={0.7} color={rimColor} />
         {/* soft under-fill so the lower chassis does not go to black */}
         <directionalLight position={[0, -3, 2]} intensity={0.25} color="#8fa0b8" />
 

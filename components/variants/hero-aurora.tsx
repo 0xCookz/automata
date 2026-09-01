@@ -103,6 +103,7 @@ export function HeroAurora() {
                 color="#d5dbec"
                 screenColor="#7aa2ff"
                 screenGlow={1}
+                rimColor="#7aa2ff"
               />
 
               <div className="grid grid-cols-3 gap-3">

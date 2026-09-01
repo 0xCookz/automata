@@ -80,6 +80,7 @@ export function HeroBento() {
               color="#cfd6d4"
               screenColor="#35e0c5"
               screenGlow={0.9}
+                rimColor="#35e0c5"
             />
           </Reveal>
 

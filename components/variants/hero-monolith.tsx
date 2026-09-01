@@ -68,6 +68,7 @@ export function HeroMonolith() {
             color="#e6e3dd"
             screenColor="#f4f3f1"
             screenGlow={0.55}
+            rimColor="#f4f3f1"
           />
           <div
             aria-hidden

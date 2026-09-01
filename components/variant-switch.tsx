@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const options = [
+  { href: "/steel", label: "H · steel" },
   { href: "/tech", label: "D · instrument" },
   { href: "/bento", label: "E · bento" },
   { href: "/monolith", label: "F · monolith" },

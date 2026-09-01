@@ -417,3 +417,34 @@ body::after {
 }
 [data-variant="bento"] .cardable-panel table thead th { border-bottom-color: var(--line); }
 [data-variant="bento"] .cardable-panel tbody tr:last-child { border-bottom: 0; }
+
+/* H · Steel — Instrument's structure wearing Monolith's palette:
+   pure black, no hue at all, the accent carried by light instead of colour. */
+[data-variant="steel"] {
+  --ink:        #050505;
+  --ink-raised: #0a0a0a;
+  --ink-card:   #0e0e0e;
+  --bone:       #f4f3f1;
+  --bone-dim:   #a2a09c;
+  --bone-faint: #7e7c76;
+  --line:       #1d1d1d;
+  --line-soft:  #151515;
+  --signal:     #f4f3f1;
+  --glass:      rgba(255, 255, 255, 0.035);
+  --glass-line: rgba(255, 255, 255, 0.1);
+  --font-display-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-sans-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+}
+[data-variant="steel"] h1,
+[data-variant="steel"] h2 { font-weight: 700; letter-spacing: -0.035em; }
+[data-variant="steel"] h3 { font-weight: 600; letter-spacing: -0.02em; }
+[data-variant="steel"] .panel {
+  border-color: var(--glass-line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0) 45%),
+    var(--glass);
+  border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+[data-variant="steel"] ::selection { background: #f4f3f1; color: #050505; }

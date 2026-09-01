@@ -44,6 +44,7 @@ export function HeroHud() {
                 color="#c9d2cc"
                 screenColor="#ffb020"
                 screenGlow={0.85}
+                rimColor="#ffb020"
               />
               {/* framing marks over the stage */}
               <svg aria-hidden className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none">
