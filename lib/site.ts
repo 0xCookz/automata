@@ -16,8 +16,8 @@ export const site = {
 } as const;
 
 export const nav = [
+  { label: "Why robots need it", href: "#why" },
   { label: "How it works", href: "#how" },
-  { label: "Why it works", href: "#why" },
   { label: "Ledger", href: "#ledger" },
   { label: "Pay", href: "#pay" },
   { label: "FAQ", href: "#faq" },

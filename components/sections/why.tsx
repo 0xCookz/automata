@@ -8,13 +8,13 @@ export function Why() {
     <section id="why" className="scroll-mt-24 border-t border-line bg-ink-raised py-24 md:py-32">
       <div className="shell">
         <SectionHead
-          index="02"
-          label="The technical bit"
+          index="01"
+          label="Why this exists"
           title={
             <>
               What your clips
               <br />
-              actually train.
+              actually teach a robot.
             </>
           }
           intro={

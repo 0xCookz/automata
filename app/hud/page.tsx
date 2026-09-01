@@ -24,8 +24,8 @@ export default function Page() {
       <main id="main">
         <HeroHud />
         <Ticker />
-        <How />
         <Why />
+        <How />
         <Ledger />
         <Pay />
         <Faq />

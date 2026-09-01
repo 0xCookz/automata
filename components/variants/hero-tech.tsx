@@ -45,12 +45,12 @@ const blueSkin: HeroTechSkin = {
 const loop = [
   ["01", "Film 5–30s of a chore", "from your own eyeline, on your phone"],
   ["02", "A person reviews it", "median 6 hours, reasons given if not"],
-  ["03", "USDG hits your wallet", "on Robinhood Chain, no minimum"],
+  ["03", "USDG hits your wallet", "and the clip enters the training set"],
 ];
 
 const readouts = [
-  ["status", "online"],
-  ["queue", "6h 12m"],
+  ["training on", "12,480 clips"],
+  ["review queue", "6h 12m"],
   ["last payout", "$5.08"],
 ];
 
@@ -74,7 +74,7 @@ export function HeroTech({ skin = blueSkin }: { skin?: HeroTechSkin }) {
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-signal" />
               </span>
               <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-bone-dim">
-                Corpus 001 · open for submissions
+                Training data for humanoid robots · corpus 001 open
               </span>
             </Reveal>
 
@@ -91,12 +91,19 @@ export function HeroTech({ skin = blueSkin }: { skin?: HeroTechSkin }) {
               ]}
             />
 
-            <Reveal delay={0.32} className="mt-7 max-w-[48ch] text-[1.0625rem] leading-relaxed text-bone-dim">
+            <Reveal delay={0.26} className="mt-6 max-w-[44ch] text-[1.25rem] leading-snug text-bone">
               <p>
-                Robots learn to use their hands by watching people do things — and almost
-                nobody has filmed ordinary life from the inside. So we buy that footage:
-                you record a task from your own eyeline, a person reviews the clip, and
-                approved ones are paid in USDG straight to your wallet.
+                Your clip becomes training data for a robot&apos;s hands.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.34} className="mt-5 max-w-[48ch] text-[1.0625rem] leading-relaxed text-bone-dim">
+              <p>
+                Humanoids are close to walking and nowhere near loading a dishwasher.
+                Manipulation is learned by watching human hands, and the footage that
+                teaches it — real homes, bad light, one continuous task — barely exists.
+                Automata buys it, clip by clip, and pays you in USDG the moment a
+                reviewer approves yours.
               </p>
             </Reveal>
 

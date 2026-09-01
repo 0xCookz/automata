@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { faqs, site } from "@/lib/site";
 import "./globals.css";
 
-const title = "Automata — Get paid to teach robots how the world works";
+const title = "Automata — Get paid to film the chores that train humanoid robots";
 const description =
-  "Record 5 to 30 seconds of an everyday task from your own point of view. A human reviews it. Approved clips are paid in USDG on Robinhood Chain, straight to your wallet.";
+  "Automata buys first-person footage of everyday chores to train humanoid robot manipulation. Record 5 to 30 seconds from your own eyeline, a person reviews it, and approved clips are paid in USDG on Robinhood Chain.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://automata.build"),
