@@ -5,6 +5,7 @@ const options = [
   { href: "/hud", label: "A · machine vision" },
   { href: "/paper", label: "B · field guide" },
   { href: "/product", label: "C · product" },
+  { href: "/tech", label: "D · instrument" },
 ];
 
 /** Temporary chooser so the four directions can be compared side by side. */

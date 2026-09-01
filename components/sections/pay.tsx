@@ -37,7 +37,7 @@ export function Pay() {
         </div>
 
         <div className="col-span-12 lg:col-span-7">
-          <Reveal className="border border-line bg-ink p-5 sm:p-6 md:p-10">
+          <Reveal className="panel border border-line bg-ink p-5 sm:p-6 md:p-10">
             <div className="flex items-end justify-between gap-6">
               <div>
                 <div className="eyebrow">You would receive</div>

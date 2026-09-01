@@ -27,6 +27,10 @@
   --signal:     #ff4a1c;
   --signal-dim: #c2361180;
 
+  --font-display-family: "Zodiak", "Iowan Old Style", Georgia, serif;
+  --font-sans-family: "Switzer", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono-family: "Spline Mono", ui-monospace, SFMono-Regular, monospace;
+
   --shell: clamp(1.25rem, 5vw, 5.5rem);
   --rule: 1px solid var(--line);
 }
@@ -42,9 +46,10 @@
   --color-line-soft: var(--line-soft);
   --color-signal: var(--signal);
 
-  --font-display: "Zodiak", "Iowan Old Style", Georgia, serif;
-  --font-sans: "Switzer", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-mono: "Spline Mono", ui-monospace, SFMono-Regular, monospace;
+  /* referenced, not inlined, so a [data-variant] scope can swap the face */
+  --font-display: var(--font-display-family);
+  --font-sans: var(--font-sans-family);
+  --font-mono: var(--font-mono-family);
 }
 
 /* ── Base ──────────────────────────────────────────────────────────────── */
@@ -55,7 +60,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   background: var(--ink);
   color: var(--bone);
-  font-family: var(--font-sans);
+  font-family: var(--font-sans-family);
   font-size: 1rem;
   line-height: 1.55;
   font-synthesis-weight: none;
@@ -72,7 +77,7 @@ body {
   border-radius: 2px;
 }
 
-h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; line-height: 0.98; }
+h1, h2, h3 { font-family: var(--font-display-family); font-weight: 700; letter-spacing: -0.02em; line-height: 0.98; }
 
 /* Grain — one repeated 160px tile, painted once over the whole document */
 body::after {
@@ -90,7 +95,7 @@ body::after {
 .shell { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: var(--shell); }
 
 .eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-mono-family);
   font-size: 0.6875rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -123,7 +128,7 @@ body::after {
 .marquee-item {
   display: inline-flex; align-items: center; gap: 0.75rem;
   padding-inline: 1.25rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-mono-family);
   font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;
 }
 @keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
@@ -196,8 +201,8 @@ body::after {
   --line:       #1e2624;
   --line-soft:  #171d1b;
   --signal:     #ffb020;
-  --font-display: "Spline Mono", ui-monospace, monospace;
-  --font-sans: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  --font-display-family: "Spline Mono", ui-monospace, monospace;
+  --font-sans-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
 }
 [data-variant="hud"] h1,
 [data-variant="hud"] h2,
@@ -218,8 +223,8 @@ body::after {
   --line:       #cdc5b4;
   --line-soft:  #ded7c8;
   --signal:     #bf3d17;
-  --font-display: "Young Serif", Georgia, serif;
-  --font-sans: "Supreme", ui-sans-serif, system-ui, sans-serif;
+  --font-display-family: "Young Serif", Georgia, serif;
+  --font-sans-family: "Supreme", ui-sans-serif, system-ui, sans-serif;
 }
 [data-variant="paper"] h1,
 [data-variant="paper"] h2,
@@ -237,8 +242,8 @@ body::after {
   --line:       #d8d5ce;
   --line-soft:  #e4e1da;
   --signal:     #1f3cff;
-  --font-display: "Clash Display", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  --font-display-family: "Clash Display", ui-sans-serif, system-ui, sans-serif;
+  --font-sans-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
 }
 [data-variant="product"] h1,
 [data-variant="product"] h2 { font-weight: 600; letter-spacing: -0.035em; }
@@ -249,3 +254,62 @@ body::after {
 /* the grain tile is tuned for a dark ground — lighten its hand on paper stock */
 [data-variant="paper"] .grain-soft,
 [data-variant="product"] .grain-soft { opacity: 0.35; }
+
+@font-face { font-family: "Satoshi"; src: url("/fonts/satoshi-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Satoshi"; src: url("/fonts/satoshi-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Satoshi"; src: url("/fonts/satoshi-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Satoshi"; src: url("/fonts/satoshi-900.woff2") format("woff2"); font-weight: 900; font-display: swap; }
+
+/* D · Instrument — deep blue-black, glass panels, one cold accent ─────────
+   The premium-tech read: near-black with a blue cast, hairline glass
+   surfaces with a lit top edge, a single cold accent, and no serif. */
+[data-variant="tech"] {
+  --ink:        #06070b;
+  --ink-raised: #090b11;
+  --ink-card:   #0d1017;
+  --bone:       #e9ecf4;
+  --bone-dim:   #9aa1b4;
+  --bone-faint: #7b8296;
+  --line:       #1a1f2b;
+  --line-soft:  #141822;
+  --signal:     #5d7dff;
+  --glass:      rgba(255, 255, 255, 0.035);
+  --glass-line: rgba(255, 255, 255, 0.09);
+  --font-display-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-sans-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+}
+[data-variant="tech"] h1,
+[data-variant="tech"] h2,
+[data-variant="tech"] h3 { font-weight: 700; letter-spacing: -0.035em; }
+[data-variant="tech"] h3 { letter-spacing: -0.02em; }
+[data-variant="tech"] ::selection { background: var(--signal); color: #ffffff; }
+
+/* glass surface: hairline border, faint fill, a lit top edge */
+[data-variant="tech"] .panel {
+  border-color: var(--glass-line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 42%),
+    var(--glass);
+  border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+[data-variant="tech"] .panel-tight { border-radius: 10px; }
+
+/* engineering grid, faded out towards the edges */
+.grid-field {
+  background-image:
+    linear-gradient(to right, var(--line-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line-soft) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(70% 55% at 50% 30%, #000 0%, transparent 100%);
+  mask-image: radial-gradient(70% 55% at 50% 30%, #000 0%, transparent 100%);
+}
+
+/* one cold gradient on the key phrase — the only decorative type in the set */
+.text-gradient {
+  background: linear-gradient(96deg, #ffffff 0%, #9fb4ff 45%, #5d7dff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

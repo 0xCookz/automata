@@ -7,7 +7,7 @@ import Image from "next/image";
  */
 export function AnnotatedFrame() {
   return (
-    <figure className="relative border border-line bg-ink-raised">
+    <figure className="panel relative border border-line bg-ink-raised">
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
           src="/pov.jpg"
