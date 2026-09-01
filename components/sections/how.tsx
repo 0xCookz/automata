@@ -1,0 +1,58 @@
+import { Reveal } from "@/components/motion";
+import { SectionHead } from "@/components/section-head";
+import { steps } from "@/lib/site";
+
+export function How() {
+  return (
+    <section id="how" className="shell scroll-mt-24 py-24 md:py-36">
+      <div className="grid grid-cols-12 gap-y-12 lg:gap-x-12">
+        <div className="col-span-12 lg:col-span-4">
+          <div className="lg:sticky lg:top-28">
+            <SectionHead
+              index="01"
+              label="How it works"
+              title={
+                <>
+                  Three steps, no
+                  <br />
+                  experience needed.
+                </>
+              }
+              intro={
+                <p>
+                  If you can use a phone and you do chores, you already have everything
+                  this requires. The whole loop usually closes the same day.
+                </p>
+              }
+            />
+          </div>
+        </div>
+
+        <ol className="col-span-12 lg:col-span-8">
+          {steps.map((s) => (
+            <li key={s.n} className="border-t border-line last:border-b">
+              <Reveal className="grid grid-cols-12 gap-x-6 gap-y-3 py-8 md:py-11">
+                <div className="col-span-12 md:col-span-2">
+                  <span className="font-display text-4xl leading-none text-signal md:text-5xl">
+                    {s.n}
+                  </span>
+                </div>
+                <div className="col-span-12 md:col-span-6">
+                  <h3 className="font-display text-2xl tracking-tight md:text-[1.75rem]">
+                    {s.title}
+                  </h3>
+                  <p className="mt-3 max-w-[44ch] text-bone-dim">{s.body}</p>
+                </div>
+                <div className="col-span-12 md:col-span-4 md:text-right">
+                  <p className="font-mono text-[11px] uppercase leading-relaxed tracking-[0.12em] text-bone-faint">
+                    {s.aside}
+                  </p>
+                </div>
+              </Reveal>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}

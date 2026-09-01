@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Automata
 
-## Getting Started
+Landing page for a paid corpus of first-person footage: people record 5–30s of an ordinary
+task from their own eyeline, a human reviews each clip, and approved clips are paid in USDG
+on Robinhood Chain.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router, Turbopack) · React 19 · TypeScript
+- Tailwind CSS v4 (tokens in `app/globals.css`, no config file)
+- GSAP + ScrollTrigger for reveals (`components/motion.tsx`)
+- react-three-fiber + three for the hero automaton (`components/ui/robot-hero.tsx`)
+
+## Art direction
+
+Dark technical archive: near-black `#08080a`, bone `#ece7de`, one signal orange `#ff4a1c`.
+Three faces, all self-hosted from `public/fonts` — **Zodiak** (display serif), **Switzer**
+(body), **Spline Sans Mono** (labels, ledger figures). No Inter, no Playfair, no Instrument
+Serif. Motion is masked line reveals and drawn hairlines rather than fade-up.
+
+The hero automaton is the supplied `robot-hero` component with the navbar, wordmark backdrop
+and light stage removed — the robot only, smaller, re-lit for a black page, and with the HDRI
+environment dropped so the page has no runtime CDN dependency.
+
+## Content
+
+All copy, sample payouts, FAQ and pay rates live in `lib/site.ts`.
+
+- `payouts` is **sample data with placeholder transaction hashes** — the `Verify` links will
+  404 on the explorer until real ones are in. Replace before launch.
+- `pay.base` / `pay.perSecond` drive both the dial and the FAQ, so changing the rate changes
+  both.
+- The `Record a clip` buttons point at `#record` (`data-cta="record"`); wire them to the
+  recorder when it exists.
+
+## Assets
+
+`public/pov.jpg`, `public/og.jpg` and the icons were generated with GPT Image 2 through the
+Higgsfield CLI — original renders, not stock. Raw outputs are kept in `assets-raw/`.
+
+## Develop
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
