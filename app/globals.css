@@ -360,7 +360,8 @@ body::after {
 [data-variant="mono"] .panel { border-color: var(--line); background: var(--ink-raised); }
 [data-variant="mono"] ::selection { background: #f4f3f1; color: #050505; }
 .text-mercury {
-  background: linear-gradient(102deg, #ffffff 0%, #b9b6b0 38%, #ffffff 62%, #8d8a85 100%);
+  /* keep every stop bright — this sits on the words that carry the offer */
+  background: linear-gradient(102deg, #ffffff 0%, #dedbd5 38%, #ffffff 64%, #cbc8c2 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

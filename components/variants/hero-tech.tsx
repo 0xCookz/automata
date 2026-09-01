@@ -41,6 +41,13 @@ const blueSkin: HeroTechSkin = {
     "bg-signal text-white shadow-[0_10px_30px_-10px_rgba(93,125,255,0.9)]",
 };
 
+/** the whole loop, spelled out under the fold-line */
+const loop = [
+  ["01", "Film 5–30s of a chore", "from your own eyeline, on your phone"],
+  ["02", "A person reviews it", "median 6 hours, reasons given if not"],
+  ["03", "USDG hits your wallet", "on Robinhood Chain, no minimum"],
+];
+
 const readouts = [
   ["status", "online"],
   ["queue", "6h 12m"],
@@ -76,19 +83,20 @@ export function HeroTech({ skin = blueSkin }: { skin?: HeroTechSkin }) {
               delay={0.08}
               className="mt-7 font-display text-[clamp(2.35rem,5.2vw,4.4rem)] leading-[1.02]"
               lines={[
-                <Fragment key="a">The data robots are</Fragment>,
-                <Fragment key="b">missing is sitting</Fragment>,
+                <Fragment key="a">Film 30 seconds of</Fragment>,
+                <Fragment key="b">an everyday chore.</Fragment>,
                 <Fragment key="c">
-                  in <span className={skin.gradient}>your kitchen</span>.
+                  <span className={skin.gradient}>Get paid</span> for it.
                 </Fragment>,
               ]}
             />
 
             <Reveal delay={0.32} className="mt-7 max-w-[48ch] text-[1.0625rem] leading-relaxed text-bone-dim">
               <p>
-                Record five to thirty seconds of an ordinary task from your own eyeline.
-                A person reviews every clip. Approved ones settle in USDG on Robinhood
-                Chain — straight to your wallet, no minimum, no payout cycle.
+                Robots learn to use their hands by watching people do things — and almost
+                nobody has filmed ordinary life from the inside. So we buy that footage:
+                you record a task from your own eyeline, a person reviews the clip, and
+                approved ones are paid in USDG straight to your wallet.
               </p>
             </Reveal>
 
@@ -115,12 +123,18 @@ export function HeroTech({ skin = blueSkin }: { skin?: HeroTechSkin }) {
               </a>
             </Reveal>
 
-            <Reveal delay={0.52} className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-bone-faint">
-              <span>No minimum</span>
-              <span aria-hidden className="h-3 w-px bg-line" />
-              <span>Reviewed by a person</span>
-              <span aria-hidden className="h-3 w-px bg-line" />
-              <span>Paid on-chain</span>
+            <Reveal delay={0.52} stagger={0.07} className="mt-10 grid gap-px border-t border-line pt-6 sm:grid-cols-3">
+              {loop.map(([n, title, detail]) => (
+                <div key={n} className="sm:pr-5">
+                  <div className="flex items-baseline gap-2.5">
+                    <span className="font-mono text-[10px] tracking-[0.16em] text-signal">{n}</span>
+                    <span className="text-[0.9375rem] font-medium text-bone">{title}</span>
+                  </div>
+                  <p className="mt-1.5 pl-[1.9rem] text-[0.8125rem] leading-snug text-bone-faint sm:pl-0">
+                    {detail}
+                  </p>
+                </div>
+              ))}
             </Reveal>
           </div>
 
