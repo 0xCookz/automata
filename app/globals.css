@@ -448,3 +448,7 @@ body::after {
   overflow: hidden;
 }
 [data-variant="steel"] ::selection { background: #f4f3f1; color: #050505; }
+
+/* the mark is drawn in white; invert it on the light directions */
+[data-variant="paper"] .mark,
+[data-variant="product"] .mark { filter: invert(1); }
