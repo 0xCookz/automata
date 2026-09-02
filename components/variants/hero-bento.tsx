@@ -99,9 +99,9 @@ export function HeroBento() {
 
           {/* rate */}
           <Reveal delay={0.24} className="panel col-span-6 border border-line p-6 lg:col-span-3">
-            <div className="eyebrow">Pays up to</div>
-            <div className="mt-3 font-display text-[2.5rem] leading-none tnum">$5.80</div>
-            <div className="mt-3 text-sm text-bone-dim">for a full thirty seconds</div>
+            <div className="eyebrow">Every clip pays</div>
+            <div className="mt-3 font-display text-[2.5rem] leading-none tnum">8.50</div>
+            <div className="mt-3 text-sm text-bone-dim">USDG, flat, five to thirty seconds</div>
             <div className="mt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-bone-faint">
               no minimum · no cycle
             </div>

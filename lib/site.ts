@@ -23,14 +23,15 @@ export const nav = [
   { label: "FAQ", href: "#faq" },
 ];
 
-/** base + per-second rate, in USDG. Mirrored by the payout dial. */
-export const pay = { base: 2.2, perSecond: 0.12, min: 5, max: 30 };
+/** One flat rate per approved clip, in USDG — length does not change it. */
+export const pay = { flat: 8.5, min: 5, max: 30 };
 
-export const payoutFor = (seconds: number) =>
-  Math.round((pay.base + pay.perSecond * seconds) * 100) / 100;
+/** What a week of posting is worth. */
+export const payoutForClips = (clips: number) =>
+  Math.round(pay.flat * clips * 100) / 100;
 
 export const stats = [
-  { value: "$4.62", label: "median payout per clip" },
+  { value: "8.50", label: "USDG per approved clip" },
   { value: "6h 12m", label: "median time to review" },
   { value: "$0", label: "payout minimum" },
   { value: "100%", label: "reviewed by a person" },
@@ -114,14 +115,14 @@ export type Payout = {
 };
 
 export const payouts: Payout[] = [
-  { task: "Wiping down a kitchen counter", seconds: 24, amount: 5.08, hash: "0x8c41d0a7e93f4b2c6188aa5f0d3e77b91c4a6e2d05f8b31c7a9e04d2b6f13c8a", when: "12 min ago" },
-  { task: "Folding a fitted sheet, badly", seconds: 30, amount: 5.8, hash: "0x2f77b0c9a145e83d0b6ca2417e59d8f30ac1b47e6d92f085c31a7be40d6592cf", when: "1 h ago" },
-  { task: "Changing the oil on a hatchback", seconds: 28, amount: 5.56, hash: "0xd1a904f7c38b52e6470fa1cd9b83e25074c6ad19f52b3e807a4c1d69f0b3872e", when: "3 h ago" },
-  { task: "Untangling a garden hose", seconds: 19, amount: 4.48, hash: "0x5b6ec27a04193fd8c7a25be0134f97ad6c81e35029b4fa7d1c6083e5b29d41fa", when: "5 h ago" },
-  { task: "Loading a dishwasher after dinner", seconds: 26, amount: 5.32, hash: "0x9e30c14b7a6df852013eb9c47f2a60d5183bc94e7620af3d5c81e07b4a29f6d3", when: "7 h ago" },
-  { task: "Feeding two impatient cats", seconds: 14, amount: 3.88, hash: "0x47c8e1052bd63f9a7e04c1b8523da96f0e7b34c15928da60f3b17e8c4025d9ba", when: "9 h ago" },
-  { task: "Hanging a picture, second attempt", seconds: 22, amount: 4.84, hash: "0xb053a7c9e2148df6035ca7b19e46f28d5017c3ba9e64f120d8a35c07be914f26", when: "yesterday" },
-  { task: "Sorting a jar of mixed screws", seconds: 30, amount: 5.8, hash: "0x6da21f80c5934be7a018d6c2f37b04e95a1c83b7de20f649a5cd0817be36f2a4", when: "yesterday" },
+  { task: "Wiping down a kitchen counter", seconds: 24, amount: 8.5, hash: "0x8c41d0a7e93f4b2c6188aa5f0d3e77b91c4a6e2d05f8b31c7a9e04d2b6f13c8a", when: "12 min ago" },
+  { task: "Folding a fitted sheet, badly", seconds: 30, amount: 8.5, hash: "0x2f77b0c9a145e83d0b6ca2417e59d8f30ac1b47e6d92f085c31a7be40d6592cf", when: "1 h ago" },
+  { task: "Changing the oil on a hatchback", seconds: 28, amount: 8.5, hash: "0xd1a904f7c38b52e6470fa1cd9b83e25074c6ad19f52b3e807a4c1d69f0b3872e", when: "3 h ago" },
+  { task: "Untangling a garden hose", seconds: 19, amount: 8.5, hash: "0x5b6ec27a04193fd8c7a25be0134f97ad6c81e35029b4fa7d1c6083e5b29d41fa", when: "5 h ago" },
+  { task: "Loading a dishwasher after dinner", seconds: 26, amount: 8.5, hash: "0x9e30c14b7a6df852013eb9c47f2a60d5183bc94e7620af3d5c81e07b4a29f6d3", when: "7 h ago" },
+  { task: "Feeding two impatient cats", seconds: 14, amount: 8.5, hash: "0x47c8e1052bd63f9a7e04c1b8523da96f0e7b34c15928da60f3b17e8c4025d9ba", when: "9 h ago" },
+  { task: "Hanging a picture, second attempt", seconds: 22, amount: 8.5, hash: "0xb053a7c9e2148df6035ca7b19e46f28d5017c3ba9e64f120d8a35c07be914f26", when: "yesterday" },
+  { task: "Sorting a jar of mixed screws", seconds: 30, amount: 8.5, hash: "0x6da21f80c5934be7a018d6c2f37b04e95a1c83b7de20f649a5cd0817be36f2a4", when: "yesterday" },
 ];
 
 export const faqs = [
@@ -135,11 +136,7 @@ export const faqs = [
   },
   {
     q: "How much does it pay?",
-    a: `Every clip pays a ${pay.base.toFixed(2)} USDG base plus ${pay.perSecond.toFixed(
-      2,
-    )} USDG per second, so a thirty-second clip settles at ${payoutFor(30).toFixed(
-      2,
-    )} USDG. You see the exact figure before you submit.`,
+    a: `${pay.flat.toFixed(2)} USDG for every approved clip, flat. A five-second clip and a thirty-second clip pay exactly the same, so there is no reason to pad one — film the task, stop when it is done.`,
   },
   {
     q: "When do I get paid?",

@@ -74,7 +74,7 @@ export function HeroPaper() {
               </div>
               <figcaption className="flex items-baseline justify-between gap-4 border-t border-line px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-bone-faint">
                 <span>Plate I · accepted, 24s</span>
-                <span className="text-signal">$5.08</span>
+                <span className="text-signal">8.50 USDG</span>
               </figcaption>
             </figure>
           </Reveal>

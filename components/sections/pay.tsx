@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { Reveal } from "@/components/motion";
 import { SectionHead } from "@/components/section-head";
-import { pay, payoutFor, site } from "@/lib/site";
+import { pay, payoutForClips, site } from "@/lib/site";
 
-const ticks = [5, 10, 15, 20, 25, 30];
+const marks = [1, 5, 10, 15, 20, 25];
 
 export function Pay() {
-  const [seconds, setSeconds] = useState(24);
-  const amount = payoutFor(seconds);
-  const progress = ((seconds - pay.min) / (pay.max - pay.min)) * 100;
+  const [clips, setClips] = useState(5);
+  const week = payoutForClips(clips);
+  const progress = ((clips - 1) / (25 - 1)) * 100;
 
   return (
     <section id="pay" className="scroll-mt-24 border-y border-line bg-ink-raised py-24 md:py-32">
@@ -21,16 +21,16 @@ export function Pay() {
             label="What it pays"
             title={
               <>
-                Longer clips
+                One rate.
                 <br />
-                pay more.
+                Every clip.
               </>
             }
             intro={
               <p>
-                A flat base plus a per-second rate, and nothing else. The figure below is
-                the figure that settles — no platform cut taken afterwards, no gas billed
-                back to you.
+                {pay.flat.toFixed(2)} {site.token} for every approved clip, whether it
+                runs five seconds or thirty. No platform cut afterwards, no gas billed
+                back to you, and nothing to pad — film the task, stop when it is done.
               </p>
             }
           />
@@ -38,66 +38,77 @@ export function Pay() {
 
         <div className="col-span-12 lg:col-span-7">
           <Reveal className="panel border border-line bg-ink p-5 sm:p-6 md:p-10">
-            <div className="flex items-end justify-between gap-6">
+            <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
-                <div className="eyebrow">You would receive</div>
-                <output
-                  htmlFor="clip-length"
-                  className="mt-3 block font-display text-[clamp(2.75rem,9vw,5rem)] leading-none tracking-[-0.03em] tnum"
-                >
-                  ${amount.toFixed(2)}
-                </output>
+                <div className="eyebrow">Per approved clip</div>
+                <div className="mt-3 font-display text-[clamp(3rem,9vw,5.5rem)] leading-none tracking-[-0.03em] tnum">
+                  {pay.flat.toFixed(2)}
+                  <span className="ml-3 align-baseline font-mono text-base tracking-normal text-bone-faint">
+                    {site.token}
+                  </span>
+                </div>
                 <div className="mt-3 font-mono text-[11px] uppercase tracking-[0.14em] text-bone-faint">
-                  {site.token} · {site.chain}
+                  {pay.min}–{pay.max}s · flat rate · {site.chain}
                 </div>
-              </div>
-
-              <div className="text-right">
-                <div className="font-display text-4xl leading-none tnum md:text-5xl">
-                  {seconds}
-                  <span className="text-bone-faint">s</span>
-                </div>
-                <div className="eyebrow mt-2">clip length</div>
               </div>
             </div>
 
-            <div className="mt-10">
-              <label htmlFor="clip-length" className="sr-only">
-                Clip length in seconds
-              </label>
+            <div className="mt-10 border-t border-line pt-8">
+              <div className="flex items-end justify-between gap-6">
+                <div>
+                  <label htmlFor="clip-count" className="eyebrow">
+                    If you post
+                  </label>
+                  <div className="mt-2 font-display text-3xl tnum md:text-4xl">
+                    {clips}
+                    <span className="ml-2 text-base font-normal text-bone-dim">
+                      {clips === 1 ? "clip a week" : "clips a week"}
+                    </span>
+                  </div>
+                </div>
+
+                <output htmlFor="clip-count" className="text-right">
+                  <div className="eyebrow">You take home</div>
+                  <div className="mt-2 font-display text-3xl tnum md:text-4xl">
+                    {week.toFixed(2)}
+                    <span className="ml-2 text-base font-normal text-bone-dim">
+                      {site.token}
+                    </span>
+                  </div>
+                </output>
+              </div>
+
               <input
-                id="clip-length"
+                id="clip-count"
                 type="range"
-                min={pay.min}
-                max={pay.max}
+                min={1}
+                max={25}
                 step={1}
-                value={seconds}
-                onChange={(e) => setSeconds(Number(e.target.value))}
-                className="dial"
+                value={clips}
+                onChange={(e) => setClips(Number(e.target.value))}
+                className="dial mt-6"
                 style={{ ["--progress" as string]: `${progress}%` }}
-                aria-valuetext={`${seconds} seconds, ${amount.toFixed(2)} ${site.token}`}
+                aria-valuetext={`${clips} clips a week, ${week.toFixed(2)} ${site.token}`}
               />
 
-              <div className="mt-4 flex justify-between font-mono text-[10px] tracking-[0.14em] text-bone-faint tnum">
-                {ticks.map((t) => (
+              <div className="mt-2 flex justify-between font-mono text-[10px] tracking-[0.14em] text-bone-faint tnum">
+                {marks.map((m) => (
                   <button
-                    key={t}
+                    key={m}
                     type="button"
-                    onClick={() => setSeconds(t)}
+                    onClick={() => setClips(m)}
                     className="min-h-11 flex-1 cursor-pointer transition-colors duration-200 first:text-left last:text-right hover:text-bone"
-                    aria-label={`Set clip length to ${t} seconds`}
+                    aria-label={`Set ${m} clips a week`}
                   >
-                    {t}s
+                    {m}
                   </button>
                 ))}
               </div>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-bone-faint">
-              <span className="tnum">
-                {pay.base.toFixed(2)} base + {pay.perSecond.toFixed(2)} × {seconds}s
-              </span>
-              <span>settles on approval</span>
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-bone-faint">
+              <span className="tnum">{clips} × {pay.flat.toFixed(2)} {site.token}</span>
+              <span>paid per approval, not per week</span>
             </div>
           </Reveal>
         </div>

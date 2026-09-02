@@ -3,7 +3,7 @@
 import { Fragment } from "react";
 import dynamic from "next/dynamic";
 import { MaskLines, Reveal } from "@/components/motion";
-import { pay, payoutFor, site } from "@/lib/site";
+import { pay, site } from "@/lib/site";
 
 const RobotStage = dynamic(
   () => import("@/components/ui/robot-hero").then((m) => m.RobotStage),
@@ -109,7 +109,7 @@ export function HeroAurora() {
               <div className="grid grid-cols-3 gap-3">
                 {[
                   ["clip", `${pay.min}–${pay.max}s`],
-                  ["up to", `$${payoutFor(pay.max).toFixed(2)}`],
+                  ["per clip", `${pay.flat.toFixed(2)}`],
                   ["queue", "6h 12m"],
                 ].map(([k, v]) => (
                   <div key={k} className="rounded-xl border border-line/70 bg-white/[0.03] px-3 py-2.5">

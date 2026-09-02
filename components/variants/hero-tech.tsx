@@ -49,13 +49,13 @@ const blueSkin: HeroTechSkin = {
 const loop = [
   ["01", "Film 5–30s of a chore", "from your own eyeline, on your phone"],
   ["02", "A person reviews it", "median 6 hours, reasons given if not"],
-  ["03", "USDG hits your wallet", "and the clip enters the training set"],
+  ["03", "8.50 USDG hits your wallet", "flat, per approved clip"],
 ];
 
 const readouts = [
   ["training on", "12,480 clips"],
   ["review queue", "6h 12m"],
-  ["last payout", "$5.08"],
+  ["per clip", "8.50 USDG"],
 ];
 
 export function HeroTech({

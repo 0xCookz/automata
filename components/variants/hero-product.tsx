@@ -3,7 +3,7 @@
 import { Fragment } from "react";
 import dynamic from "next/dynamic";
 import { MaskLines, Reveal } from "@/components/motion";
-import { pay, payoutFor, site } from "@/lib/site";
+import { pay, site } from "@/lib/site";
 
 const RobotStage = dynamic(
   () => import("@/components/ui/robot-hero").then((m) => m.RobotStage),
@@ -12,7 +12,7 @@ const RobotStage = dynamic(
 
 const specs = [
   ["Clip length", `${pay.min}–${pay.max}s`],
-  ["Pays up to", `$${payoutFor(pay.max).toFixed(2)}`],
+  ["Every clip pays", `${pay.flat.toFixed(2)} ${site.token}`],
   ["Settles in", site.token],
   ["Reviewed by", "a person"],
 ];

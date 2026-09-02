@@ -28,7 +28,7 @@ export function Ledger() {
             <CountUp to={total} prefix="$" decimals={2} className="tnum" />
           </div>
           <div className="eyebrow mt-2">
-            paid across {payouts.length} clips · settled in {site.token}
+            {payouts.length} clips · {site.token} on {site.chain}
           </div>
         </Reveal>
       </div>
