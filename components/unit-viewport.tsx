@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Mode = "plate" | "figure";
 
@@ -15,16 +15,25 @@ type Mode = "plate" | "figure";
  */
 export function UnitViewport({
   src = "/unit-figure.png",
+  video = "/unit-loop.mp4",
   alt = "An Automata humanoid unit.",
   mode = "figure",
   className = "",
 }: {
   src?: string;
+  /** looping clip of the unit; the still is used as its poster and as the
+      reduced-motion fallback. */
+  video?: string;
   alt?: string;
   mode?: Mode;
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [still, setStill] = useState(true);
+
+  useEffect(() => {
+    setStill(window.matchMedia("(prefers-reduced-motion: reduce)").matches || !video);
+  }, [video]);
 
   useEffect(() => {
     const el = ref.current;
@@ -81,15 +90,43 @@ export function UnitViewport({
         style={{ background: "radial-gradient(circle, #ffffff 0%, transparent 70%)" }}
       />
 
-      <div ref={ref} className="absolute inset-x-0 bottom-0 top-[6%] will-change-transform">
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes="(max-width: 1024px) 70vw, 34vw"
-          className="object-contain object-bottom"
-          priority
-        />
+      <div
+        ref={ref}
+        className="absolute inset-x-0 bottom-0 top-[6%]"
+        style={
+          still
+            ? undefined
+            : {
+                mixBlendMode: "screen",
+                // feather the clip's own frame so no rectangle shows
+                WebkitMaskImage:
+                  "radial-gradient(78% 78% at 50% 52%, #000 62%, transparent 100%)",
+                maskImage:
+                  "radial-gradient(78% 78% at 50% 52%, #000 62%, transparent 100%)",
+              }
+        }
+      >
+        {still ? (
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes="(max-width: 1024px) 70vw, 34vw"
+            className="object-contain object-bottom"
+            priority
+          />
+        ) : (
+          <video
+            src={video}
+            poster={src}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label={alt}
+            className="h-full w-full object-contain object-bottom"
+          />
+        )}
       </div>
 
       {/* contact shadow, so it is standing rather than pasted */}
