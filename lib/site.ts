@@ -22,7 +22,17 @@ export const site = {
   },
 } as const;
 
+/**
+ * The kick-off bonus paid on the first accepted clip, on top of the standing
+ * rate. Both hashes are real transfers from the payout wallet.
+ */
+export const firstUpload = {
+  bonus: 30,
+  bonusHash: "0x2e4a78720faa289e0e5b56fb165ac5d63533d857e65ad5f5d70a0f36728494e7",
+};
+
 export const nav = [
+  { label: "Uploads", href: "#uploads" },
   { label: "Why robots need it", href: "#why" },
   { label: "How it works", href: "#how" },
   { label: "Ledger", href: "#ledger" },

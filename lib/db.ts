@@ -108,7 +108,7 @@ export async function corpusStats() {
 export async function listPaid(limit = 12) {
   const q = sql();
   const rows = (await q`
-    SELECT task, seconds, amount, tx_hash, paid_at
+    SELECT task, seconds, amount, tx_hash, paid_at, video_url
       FROM submissions
      WHERE status = 'approved' AND tx_hash IS NOT NULL
      ORDER BY paid_at DESC
@@ -118,6 +118,7 @@ export async function listPaid(limit = 12) {
     amount: string;
     tx_hash: string;
     paid_at: string;
+    video_url: string;
   }[];
   return rows;
 }

@@ -8,7 +8,7 @@ export function Why() {
     <section id="why" className="scroll-mt-24 border-t border-line bg-ink-raised py-24 md:py-32">
       <div className="shell">
         <SectionHead
-          index="01"
+          index="02"
           label="Why this exists"
           title={
             <>

@@ -17,7 +17,7 @@ export function Pay() {
       <div className="shell grid grid-cols-12 gap-y-12 lg:gap-x-12">
         <div className="col-span-12 lg:col-span-5">
           <SectionHead
-            index="04"
+            index="05"
             label="What it pays"
             title={
               <>

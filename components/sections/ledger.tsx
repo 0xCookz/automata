@@ -39,7 +39,7 @@ export function Ledger() {
     <section id="ledger" className="shell scroll-mt-24 py-24 md:py-32">
       <div className="flex flex-wrap items-end justify-between gap-y-8 md:gap-8">
         <SectionHead
-          index="03"
+          index="04"
           label="Paid out"
           title={
             <>

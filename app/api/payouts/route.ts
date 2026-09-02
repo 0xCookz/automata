@@ -17,6 +17,7 @@ export async function GET() {
       amount: Number(r.amount),
       hash: r.tx_hash,
       paidAt: r.paid_at,
+      videoUrl: r.video_url,
     })),
   });
 }

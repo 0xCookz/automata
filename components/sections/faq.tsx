@@ -8,7 +8,7 @@ export function Faq() {
       <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
         <div className="col-span-12 lg:col-span-4">
           <div className="lg:sticky lg:top-28">
-            <SectionHead index="05" label="Questions" title={<>Before you<br />ask.</>} />
+            <SectionHead index="06" label="Questions" title={<>Before you<br />ask.</>} />
           </div>
         </div>
 

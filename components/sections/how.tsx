@@ -9,7 +9,7 @@ export function How() {
         <div className="col-span-12 lg:col-span-4">
           <div className="lg:sticky lg:top-28">
             <SectionHead
-              index="02"
+              index="03"
               label="How it works"
               title={
                 <>
