@@ -49,7 +49,7 @@ export function HeroBento() {
 
             <Reveal delay={0.4} stagger={0.08} className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
-                href="#record"
+                href="/record"
                 className="inline-flex h-12 items-center justify-center rounded-xl bg-signal px-6 text-sm font-semibold text-[#08090c] transition-transform duration-200 hover:-translate-y-px"
               >
                 Record a clip

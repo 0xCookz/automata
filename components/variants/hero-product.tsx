@@ -56,7 +56,7 @@ export function HeroProduct() {
 
         <Reveal delay={0.4} stagger={0.08} className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="#record"
+            href="/record"
             className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-signal px-7 text-sm font-medium text-white transition-transform duration-200 hover:-translate-y-px sm:w-auto"
           >
             Record a clip

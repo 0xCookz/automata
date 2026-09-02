@@ -120,7 +120,7 @@ export function HeroTech({
 
             <Reveal delay={0.42} stagger={0.08} className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
-                href="#record"
+                href="/record"
                 className={`group inline-flex h-12 items-center justify-center gap-2.5 rounded-xl px-6 text-sm font-medium transition-transform duration-200 hover:-translate-y-px ${skin.ctaClass}`}
               >
                 Record a clip

@@ -89,7 +89,7 @@ export function HeroHud() {
 
               <Reveal delay={0.5} stagger={0.08} className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href="#record"
+                  href="/record"
                   className="inline-flex h-12 items-center justify-center gap-3 bg-signal px-6 font-mono text-[11px] uppercase tracking-[0.16em] text-ink transition-opacity duration-200 hover:opacity-85"
                 >
                   Start recording

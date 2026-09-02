@@ -46,7 +46,7 @@ export function HeroPaper() {
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a
-                href="#record"
+                href="/record"
                 className="inline-flex h-12 items-center justify-center gap-3 bg-bone px-6 font-mono text-[11px] uppercase tracking-[0.16em] text-ink transition-colors duration-200 hover:bg-signal hover:text-ink-card"
               >
                 Record a clip

@@ -1,13 +1,42 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { CountUp, Reveal } from "@/components/motion";
 import { SectionHead } from "@/components/section-head";
-import { payouts, site } from "@/lib/site";
+import { payouts as samplePayouts, site, type Payout } from "@/lib/site";
 
 const short = (h: string) => `${h.slice(0, 6)}…${h.slice(-4)}`;
-const total = payouts.reduce((sum, p) => sum + p.amount, 0);
+
+const ago = (iso: string) => {
+  const mins = Math.max(1, Math.round((Date.now() - new Date(iso).getTime()) / 60000));
+  if (mins < 60) return `${mins} min ago`;
+  const hours = Math.round(mins / 60);
+  if (hours < 24) return `${hours} h ago`;
+  const days = Math.round(hours / 24);
+  return days === 1 ? "yesterday" : `${days} d ago`;
+};
 
 export function Ledger() {
+  const [payouts, setPayouts] = useState<Payout[]>(samplePayouts);
+  const [live, setLive] = useState(false);
+
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/payouts")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data: { payouts?: (Payout & { paidAt: string })[] } | null) => {
+        if (!alive || !data?.payouts?.length) return;
+        setPayouts(data.payouts.map((p) => ({ ...p, when: ago(p.paidAt) })));
+        setLive(true);
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  const total = payouts.reduce((sum, p) => sum + p.amount, 0);
+
   return (
     <section id="ledger" className="shell scroll-mt-24 py-24 md:py-32">
       <div className="flex flex-wrap items-end justify-between gap-y-8 md:gap-8">
@@ -98,7 +127,9 @@ export function Ledger() {
       </Reveal>
 
       <Reveal delay={0.05} className="mt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-bone-faint">
-        Transactions are public on {site.chain}. We never publish who filmed what.
+        {live
+          ? `Transactions are public on ${site.chain}. We never publish who filmed what.`
+          : `Sample rows until the first clip is paid — every live payment appears here with its transaction on ${site.chain}.`}
       </Reveal>
     </section>
   );

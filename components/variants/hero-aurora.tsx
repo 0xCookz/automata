@@ -64,7 +64,7 @@ export function HeroAurora() {
 
             <Reveal delay={0.42} stagger={0.08} className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
-                href="#record"
+                href="/record"
                 className="inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold text-[#070810] transition-transform duration-200 hover:-translate-y-px"
                 style={{ background: "linear-gradient(96deg, #dfe8ff 0%, #7ff0e0 100%)" }}
               >

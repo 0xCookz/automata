@@ -52,7 +52,7 @@ export function HeroMonolith() {
 
         <Reveal delay={0.44} className="mt-10 flex justify-center">
           <a
-            href="#record"
+            href="/record"
             className="group relative inline-flex h-14 items-center justify-center overflow-hidden border border-bone px-10 font-mono text-[11px] uppercase tracking-[0.2em] text-bone transition-colors duration-300 hover:text-ink"
           >
             <span className="absolute inset-0 -translate-y-full bg-bone transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />

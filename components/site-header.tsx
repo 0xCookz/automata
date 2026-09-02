@@ -53,7 +53,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#record"
+            href="/record"
             className="hidden h-9 items-center border border-bone/25 px-4 font-mono text-[11px] uppercase tracking-[0.16em] text-bone transition-colors duration-200 hover:border-signal hover:bg-signal hover:text-ink sm:inline-flex"
           >
             Record a clip
@@ -110,7 +110,7 @@ export function SiteHeader() {
           </ul>
 
           <a
-            href="#record"
+            href="/record"
             onClick={() => setOpen(false)}
             className="flex h-14 items-center justify-center bg-signal font-mono text-xs uppercase tracking-[0.16em] text-ink"
           >
