@@ -96,20 +96,11 @@ export function HeroTech({
       <div className="shell relative">
         <div className="grid grid-cols-12 items-center gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
-            <Reveal className="panel inline-flex items-center gap-2.5 rounded-full border border-line px-3.5 py-1.5">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-70" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-signal" />
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-bone-dim">
-                Training data for humanoid robots · corpus 001 open
-              </span>
-            </Reveal>
 
             <MaskLines
               as="h1"
               delay={0.08}
-              className="mt-7 font-display text-[clamp(2.35rem,5.2vw,4.4rem)] leading-[1.02]"
+              className="font-display text-[clamp(2.35rem,5.2vw,4.4rem)] leading-[1.02]"
               lines={[
                 <Fragment key="a">Robots have learned</Fragment>,
                 <Fragment key="b">to walk. Now they</Fragment>,
