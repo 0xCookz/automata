@@ -175,7 +175,7 @@ export function HeroTech({
 
               <div className="relative">
                 {unit === "figure" ? (
-                  <UnitViewport className="h-[17rem] w-full sm:h-[20rem] lg:h-[23rem]" />
+                  <UnitViewport className="h-[19rem] w-full sm:h-[23rem] lg:h-[28rem]" />
                 ) : (
                 <RobotStage
                   className="h-[17rem] w-full cursor-pointer sm:h-[20rem] lg:h-[23rem]"
