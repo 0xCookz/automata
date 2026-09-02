@@ -30,7 +30,7 @@ export default function Page() {
       <style>{`body{background:#050505}`}</style>
       <SiteHeader />
       <main id="main">
-        <HeroTech skin={steelSkin} />
+        <HeroTech skin={steelSkin} unit="figure" />
         <Ticker />
         <Why />
         <How />

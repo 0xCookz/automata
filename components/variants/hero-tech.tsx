@@ -9,6 +9,10 @@ const RobotStage = dynamic(
   () => import("@/components/ui/robot-hero").then((m) => m.RobotStage),
   { ssr: false },
 );
+const UnitViewport = dynamic(
+  () => import("@/components/unit-viewport").then((m) => m.UnitViewport),
+  { ssr: false },
+);
 
 export type HeroTechSkin = {
   /** wide bloom behind the hero */
@@ -54,7 +58,14 @@ const readouts = [
   ["last payout", "$5.08"],
 ];
 
-export function HeroTech({ skin = blueSkin }: { skin?: HeroTechSkin }) {
+export function HeroTech({
+  skin = blueSkin,
+  /** "figure" shows the rendered humanoid; "model" keeps the live 3D unit. */
+  unit = "model",
+}: {
+  skin?: HeroTechSkin;
+  unit?: "model" | "figure";
+}) {
   return (
     <section id="top" className="relative overflow-hidden pt-24 md:pt-32">
       {/* engineering grid + a single cold bloom, both behind everything */}
@@ -163,6 +174,9 @@ export function HeroTech({ skin = blueSkin }: { skin?: HeroTechSkin }) {
               </div>
 
               <div className="relative">
+                {unit === "figure" ? (
+                  <UnitViewport className="h-[17rem] w-full sm:h-[20rem] lg:h-[23rem]" />
+                ) : (
                 <RobotStage
                   className="h-[17rem] w-full cursor-pointer sm:h-[20rem] lg:h-[23rem]"
                   scale={1.3}
@@ -171,12 +185,16 @@ export function HeroTech({ skin = blueSkin }: { skin?: HeroTechSkin }) {
                   screenGlow={skin.robotGlow}
                   rimColor={skin.robotRim}
                 />
-                {/* pedestal: a lit line the unit appears to sit on */}
+                )}
+                {/* pedestal: a lit line the unit appears to sit on — only under
+                    the 3D model; over a photograph it reads as a scratch */}
+                {unit === "model" ? (
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-x-10 bottom-8 h-px"
                   style={{ background: skin.pedestal }}
                 />
+                ) : null}
               </div>
 
               <div className="relative grid grid-cols-3 border-t border-line">
