@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { upload } from "@vercel/blob/client";
 import { pay, site } from "@/lib/site";
 
-type Stage = "idle" | "ready" | "recording" | "preview" | "sending" | "done";
+type Stage = "idle" | "asking" | "ready" | "recording" | "preview" | "sending" | "done";
 
 const mimeType = () => {
   const candidates = [
@@ -43,6 +43,16 @@ export function Recorder() {
 
   const arm = async () => {
     setError(null);
+
+    if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === "undefined") {
+      setError("This browser cannot record video. Upload a clip instead.");
+      return;
+    }
+
+    // the browser now shows its own permission prompt; say so, because until
+    // it is answered nothing on the page moves
+    setStage("asking");
+
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: { ideal: "environment" }, width: { ideal: 1920 } },
@@ -54,9 +64,46 @@ export function Recorder() {
         await liveRef.current.play().catch(() => {});
       }
       setStage("ready");
-    } catch {
-      setError("No camera access. Allow it in your browser, then try again.");
+    } catch (e) {
+      const name = e instanceof DOMException ? e.name : "";
+      setStage("idle");
+      setError(
+        name === "NotAllowedError"
+          ? "The browser blocked the camera. Allow it for this site (the camera icon in the address bar) or upload a clip instead."
+          : name === "NotFoundError"
+            ? "No camera found on this device. Upload a clip instead."
+            : name === "NotReadableError"
+              ? "Another app is using the camera. Close it and try again."
+              : "Could not start the camera. Upload a clip instead.",
+      );
     }
+  };
+
+  /** Upload path: works on every browser, and on phones it opens the camera. */
+  const pick = async (file: File) => {
+    setError(null);
+    const url = URL.createObjectURL(file);
+    const probe = document.createElement("video");
+    probe.preload = "metadata";
+    probe.src = url;
+
+    const seconds = await new Promise<number>((resolve) => {
+      probe.onloadedmetadata = () => resolve(Math.round(probe.duration));
+      probe.onerror = () => resolve(0);
+    });
+
+    if (!seconds) {
+      URL.revokeObjectURL(url);
+      return setError("That file is not a video this browser can read.");
+    }
+    if (seconds < pay.min || seconds > pay.max) {
+      URL.revokeObjectURL(url);
+      return setError(`Clips run ${pay.min} to ${pay.max} seconds. That one is ${seconds}s.`);
+    }
+
+    stopTracks();
+    setClip({ blob: file, url, seconds });
+    setStage("preview");
   };
 
   const start = () => {
@@ -185,14 +232,26 @@ export function Recorder() {
               <button
                 type="button"
                 onClick={arm}
-                className="absolute inset-0 grid place-items-center bg-ink/70 font-mono text-[11px] uppercase tracking-[0.16em] text-bone"
+                className="absolute inset-0 grid place-items-center bg-ink/70 px-6 text-center font-mono text-[11px] uppercase tracking-[0.16em] text-bone"
               >
-                Turn the camera on
+                {error ? (
+                  <span className="max-w-[36ch] leading-relaxed text-signal">{error}</span>
+                ) : (
+                  "Turn the camera on"
+                )}
               </button>
+            ) : null}
+
+            {stage === "asking" ? (
+              <div className="absolute inset-0 grid place-items-center bg-ink/70 px-6 text-center">
+                <span className="max-w-[34ch] font-mono text-[11px] uppercase leading-relaxed tracking-[0.16em] text-bone-dim">
+                  Waiting for the browser · choose Allow to let this page see your camera
+                </span>
+              </div>
             ) : null}
           </div>
 
-          <div className="flex items-center justify-between gap-3 border-t border-line p-4">
+          <div className="flex flex-col gap-3 border-t border-line p-4 sm:flex-row sm:items-center">
             {stage === "recording" ? (
               <button
                 type="button"
@@ -204,12 +263,36 @@ export function Recorder() {
             ) : (
               <button
                 type="button"
+                disabled={stage === "asking"}
                 onClick={clip ? retake : stage === "idle" ? arm : start}
-                className="inline-flex h-12 flex-1 items-center justify-center rounded-xl bg-bone px-6 text-sm font-medium text-ink"
+                className="inline-flex h-12 flex-1 items-center justify-center rounded-xl bg-bone px-6 text-sm font-medium text-ink disabled:opacity-50"
               >
-                {clip ? "Record again" : stage === "idle" ? "Turn the camera on" : "Start recording"}
+                {clip
+                  ? "Record again"
+                  : stage === "asking"
+                    ? "Waiting for permission…"
+                    : stage === "idle"
+                      ? "Turn the camera on"
+                      : "Start recording"}
               </button>
             )}
+
+            {stage !== "recording" ? (
+              <label className="inline-flex h-12 cursor-pointer items-center justify-center rounded-xl border border-line px-6 text-sm font-medium text-bone-dim transition-colors duration-200 hover:text-bone">
+                Upload a clip
+                <input
+                  type="file"
+                  accept="video/*"
+                  capture="environment"
+                  className="sr-only"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    e.target.value = "";
+                    if (file) void pick(file);
+                  }}
+                />
+              </label>
+            ) : null}
           </div>
         </div>
 
