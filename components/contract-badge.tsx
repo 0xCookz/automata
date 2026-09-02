@@ -22,7 +22,7 @@ export function ContractBadge({ className = "" }: { className?: string }) {
 
   return (
     <div
-      className={`panel inline-flex flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-line px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.14em] ${className}`}
+      className={`inline-flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-[11px] uppercase tracking-[0.14em] ${className}`}
     >
       <span className="text-bone-faint">${ticker} contract</span>
 
