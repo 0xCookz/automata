@@ -1,12 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { nav, site } from "@/lib/site";
 import { Wordmark } from "@/components/wordmark";
 
 export function SiteHeader() {
   const [stuck, setStuck] = useState(false);
   const [open, setOpen] = useState(false);
+
+  // the nav points at sections of the home page; off it, the anchors have to
+  // carry the path or they do nothing
+  const pathname = usePathname();
+  const to = (href: string) => (pathname === "/" ? href : `/${href}`);
 
   useEffect(() => {
     const onScroll = () => setStuck(window.scrollY > 24);
@@ -43,7 +49,7 @@ export function SiteHeader() {
           {nav.map((item) => (
             <a
               key={item.href}
-              href={item.href}
+              href={to(item.href)}
               className="font-mono text-[11px] uppercase tracking-[0.16em] text-bone-dim transition-colors duration-200 hover:text-bone"
             >
               {item.label}
@@ -96,7 +102,7 @@ export function SiteHeader() {
             {nav.map((item, i) => (
               <li key={item.href} className="border-b border-line-soft">
                 <a
-                  href={item.href}
+                  href={to(item.href)}
                   onClick={() => setOpen(false)}
                   className="flex items-baseline gap-4 py-5"
                 >

@@ -20,7 +20,7 @@ export function SiteFooter() {
               {nav.map((item) => (
                 <li key={item.href}>
                   <a
-                    href={item.href}
+                    href={`/${item.href}`}
                     className="text-sm text-bone-dim transition-colors duration-200 hover:text-bone"
                   >
                     {item.label}
