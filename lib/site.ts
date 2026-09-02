@@ -10,8 +10,8 @@ export const site = {
   token: "USDG",
   explorerTx: "https://robinhoodchain.blockscout.com/tx/",
   social: {
-    x: "https://x.com",
-    telegram: "https://t.me",
+    x: "https://x.com/TryAutomata",
+    handle: "@TryAutomata",
   },
 } as const;
 
@@ -32,7 +32,7 @@ export const payoutForClips = (clips: number) =>
 
 export const stats = [
   { value: "8.50", label: "USDG per approved clip" },
-  { value: "6h 12m", label: "median time to review" },
+  { value: "5–30s", label: "one continuous take" },
   { value: "$0", label: "payout minimum" },
   { value: "100%", label: "reviewed by a person" },
 ];
@@ -73,7 +73,7 @@ export const steps = [
     n: "02",
     title: "A person watches it",
     body: "Every clip goes to a human reviewer, not a filter. If it is turned down you are told exactly which part failed, and you can shoot it again.",
-    aside: "Median turnaround: 6 hours.",
+    aside: "You are told either way, with a reason.",
   },
   {
     n: "03",
@@ -114,16 +114,11 @@ export type Payout = {
   when: string;
 };
 
-export const payouts: Payout[] = [
-  { task: "Wiping down a kitchen counter", seconds: 24, amount: 8.5, hash: "0x8c41d0a7e93f4b2c6188aa5f0d3e77b91c4a6e2d05f8b31c7a9e04d2b6f13c8a", when: "12 min ago" },
-  { task: "Folding a fitted sheet, badly", seconds: 30, amount: 8.5, hash: "0x2f77b0c9a145e83d0b6ca2417e59d8f30ac1b47e6d92f085c31a7be40d6592cf", when: "1 h ago" },
-  { task: "Changing the oil on a hatchback", seconds: 28, amount: 8.5, hash: "0xd1a904f7c38b52e6470fa1cd9b83e25074c6ad19f52b3e807a4c1d69f0b3872e", when: "3 h ago" },
-  { task: "Untangling a garden hose", seconds: 19, amount: 8.5, hash: "0x5b6ec27a04193fd8c7a25be0134f97ad6c81e35029b4fa7d1c6083e5b29d41fa", when: "5 h ago" },
-  { task: "Loading a dishwasher after dinner", seconds: 26, amount: 8.5, hash: "0x9e30c14b7a6df852013eb9c47f2a60d5183bc94e7620af3d5c81e07b4a29f6d3", when: "7 h ago" },
-  { task: "Feeding two impatient cats", seconds: 14, amount: 8.5, hash: "0x47c8e1052bd63f9a7e04c1b8523da96f0e7b34c15928da60f3b17e8c4025d9ba", when: "9 h ago" },
-  { task: "Hanging a picture, second attempt", seconds: 22, amount: 8.5, hash: "0xb053a7c9e2148df6035ca7b19e46f28d5017c3ba9e64f120d8a35c07be914f26", when: "yesterday" },
-  { task: "Sorting a jar of mixed screws", seconds: 30, amount: 8.5, hash: "0x6da21f80c5934be7a018d6c2f37b04e95a1c83b7de20f649a5cd0817be36f2a4", when: "yesterday" },
-];
+/**
+ * The ledger is fed by /api/payouts. There is no seed data on purpose: until a
+ * real clip is paid, the section shows zero.
+ */
+export const payouts: Payout[] = [];
 
 export const faqs = [
   {
@@ -144,7 +139,7 @@ export const faqs = [
   },
   {
     q: "What if my clip is rejected?",
-    a: "You get the reason in writing, in plain language, along with what to change. Rejections cost you nothing and do not count against you. Most people are approved by their second try.",
+    a: "You get the reason in writing, in plain language, along with what to change. Rejections cost you nothing and do not count against you, and you can film it again.",
   },
   {
     q: "What do I need to start?",

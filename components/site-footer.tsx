@@ -40,17 +40,7 @@ export function SiteFooter() {
                   rel="noopener noreferrer"
                   className="text-sm text-bone-dim transition-colors duration-200 hover:text-bone"
                 >
-                  X / Twitter
-                </a>
-              </li>
-              <li>
-                <a
-                  href={site.social.telegram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-bone-dim transition-colors duration-200 hover:text-bone"
-                >
-                  Telegram
+                  {site.social.handle}
                 </a>
               </li>
             </ul>

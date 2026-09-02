@@ -18,7 +18,6 @@ const ago = (iso: string) => {
 
 export function Ledger() {
   const [payouts, setPayouts] = useState<Payout[]>(samplePayouts);
-  const [live, setLive] = useState(false);
 
   useEffect(() => {
     let alive = true;
@@ -27,7 +26,6 @@ export function Ledger() {
       .then((data: { payouts?: (Payout & { paidAt: string })[] } | null) => {
         if (!alive || !data?.payouts?.length) return;
         setPayouts(data.payouts.map((p) => ({ ...p, when: ago(p.paidAt) })));
-        setLive(true);
       })
       .catch(() => {});
     return () => {
@@ -57,7 +55,8 @@ export function Ledger() {
             <CountUp to={total} prefix="$" decimals={2} className="tnum" />
           </div>
           <div className="eyebrow mt-2">
-            {payouts.length} clips · {site.token} on {site.chain}
+            {payouts.length} {payouts.length === 1 ? "clip" : "clips"} · {site.token} on{" "}
+            {site.chain}
           </div>
         </Reveal>
       </div>
@@ -81,6 +80,14 @@ export function Ledger() {
             </tr>
           </thead>
           <tbody>
+            {payouts.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="border-b border-line py-10 text-bone-dim">
+                  Nothing paid yet. The first approved clip lands here, with its
+                  transaction.
+                </td>
+              </tr>
+            ) : null}
             {payouts.map((p) => (
               <tr
                 key={p.hash}
@@ -127,9 +134,8 @@ export function Ledger() {
       </Reveal>
 
       <Reveal delay={0.05} className="mt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-bone-faint">
-        {live
-          ? `Transactions are public on ${site.chain}. We never publish who filmed what.`
-          : `Sample rows until the first clip is paid — every live payment appears here with its transaction on ${site.chain}.`}
+        Every payment appears here as a public transaction on {site.chain}. We never
+        publish who filmed what.
       </Reveal>
     </section>
   );

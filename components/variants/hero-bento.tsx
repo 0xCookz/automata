@@ -4,14 +4,12 @@ import { Fragment } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { MaskLines, Reveal } from "@/components/motion";
-import { payouts, site } from "@/lib/site";
+import { pay, site } from "@/lib/site";
 
 const RobotStage = dynamic(
   () => import("@/components/ui/robot-hero").then((m) => m.RobotStage),
   { ssr: false },
 );
-
-const latest = payouts[0];
 
 export function HeroBento() {
   return (
@@ -84,16 +82,17 @@ export function HeroBento() {
             />
           </Reveal>
 
-          {/* last payout */}
+          {/* what a clip is */}
           <Reveal delay={0.18} className="panel col-span-6 border border-line p-6 sm:col-span-5 lg:col-span-3">
-            <div className="eyebrow">Last payout</div>
+            <div className="eyebrow">One clip</div>
             <div className="mt-3 font-display text-[2.5rem] leading-none tnum">
-              ${latest.amount.toFixed(2)}
+              {pay.min}–{pay.max}s
             </div>
-            <div className="mt-3 text-sm text-bone-dim">{latest.task}</div>
-            <div className="mt-5 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-bone-faint">
-              <span className="inline-block h-1 w-1 rounded-full bg-signal" />
-              {latest.when} · {latest.seconds}s
+            <div className="mt-3 text-sm text-bone-dim">
+              one continuous take, filmed from your own eyeline
+            </div>
+            <div className="mt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-bone-faint">
+              no editing · no narration
             </div>
           </Reveal>
 

@@ -110,7 +110,7 @@ export function HeroAurora() {
                 {[
                   ["clip", `${pay.min}–${pay.max}s`],
                   ["per clip", `${pay.flat.toFixed(2)}`],
-                  ["queue", "6h 12m"],
+                  ["reviewed", "by a person"],
                 ].map(([k, v]) => (
                   <div key={k} className="rounded-xl border border-line/70 bg-white/[0.03] px-3 py-2.5">
                     <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-bone-faint">

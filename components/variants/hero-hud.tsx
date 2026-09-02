@@ -12,8 +12,8 @@ const RobotStage = dynamic(
 
 const readouts = [
   ["corpus", "001 · open"],
-  ["accepted clips", "12,480"],
-  ["review queue", "6h 12m"],
+  ["per clip", "8.50 USDG"],
+  ["clip length", "5–30s"],
   ["settlement", "USDG · Robinhood Chain"],
 ];
 

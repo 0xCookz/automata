@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { MaskLines, Reveal } from "@/components/motion";
 import { stats } from "@/lib/site";
@@ -48,15 +48,11 @@ const blueSkin: HeroTechSkin = {
 /** the whole loop, spelled out under the fold-line */
 const loop = [
   ["01", "Film 5–30s of a chore", "from your own eyeline, on your phone"],
-  ["02", "A person reviews it", "median 6 hours, reasons given if not"],
+  ["02", "A person reviews it", "by hand, with a reason either way"],
   ["03", "8.50 USDG hits your wallet", "flat, per approved clip"],
 ];
 
-const readouts = [
-  ["training on", "12,480 clips"],
-  ["review queue", "6h 12m"],
-  ["per clip", "8.50 USDG"],
-];
+type Corpus = { approved: number; pending: number; paid: number };
 
 export function HeroTech({
   skin = blueSkin,
@@ -66,6 +62,27 @@ export function HeroTech({
   skin?: HeroTechSkin;
   unit?: "model" | "figure";
 }) {
+  // real counters, straight from the submissions table — zero until the first
+  // clip is paid, and never a number we made up
+  const [corpus, setCorpus] = useState<Corpus>({ approved: 0, pending: 0, paid: 0 });
+
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/stats")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d: Corpus | null) => d && alive && setCorpus(d))
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  const readouts: [string, string][] = [
+    ["clips in corpus", corpus.approved.toLocaleString("en-US")],
+    ["in review", corpus.pending.toLocaleString("en-US")],
+    ["per clip", "8.50 USDG"],
+  ];
+
   return (
     <section id="top" className="relative overflow-hidden pt-24 md:pt-32">
       {/* engineering grid + a single cold bloom, both behind everything */}
@@ -114,7 +131,7 @@ export function HeroTech({
                 human hands, and the footage that teaches it barely exists: real homes,
                 bad light, one continuous task. Automata buys that footage clip by clip.
                 A person reviews every submission, and approved ones are paid in USDG
-                the same day.
+                on the spot.
               </p>
             </Reveal>
 

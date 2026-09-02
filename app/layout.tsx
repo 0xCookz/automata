@@ -33,6 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@TryAutomata",
+    creator: "@TryAutomata",
     title,
     description,
     images: ["/og.jpg"],

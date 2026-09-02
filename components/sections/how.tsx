@@ -21,7 +21,7 @@ export function How() {
               intro={
                 <p>
                   If you can use a phone and you do chores, you already have everything
-                  this requires. The whole loop usually closes the same day.
+                  this requires — a phone, a wallet address, and an ordinary task.
                 </p>
               }
             />

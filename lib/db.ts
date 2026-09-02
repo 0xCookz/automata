@@ -86,6 +86,24 @@ export async function markRejected(id: string, note: string) {
   await q`UPDATE submissions SET status = 'rejected', review_note = ${note} WHERE id = ${id}`;
 }
 
+/** Approved clips, clips waiting, and the total actually paid. */
+export async function corpusStats() {
+  const q = sql();
+  const rows = (await q`
+    SELECT
+      COUNT(*) FILTER (WHERE status = 'approved')            AS approved,
+      COUNT(*) FILTER (WHERE status = 'pending')             AS pending,
+      COALESCE(SUM(amount) FILTER (WHERE status = 'approved'), 0) AS paid
+    FROM submissions`) as unknown as
+    { approved: string; pending: string; paid: string }[];
+  const r = rows[0];
+  return {
+    approved: Number(r?.approved ?? 0),
+    pending: Number(r?.pending ?? 0),
+    paid: Number(r?.paid ?? 0),
+  };
+}
+
 /** Powers the public ledger. */
 export async function listPaid(limit = 12) {
   const q = sql();

@@ -184,7 +184,7 @@ export function Recorder() {
         <div className="eyebrow">In review</div>
         <h2 className="mt-4 font-display text-3xl md:text-4xl">Clip received.</h2>
         <p className="mx-auto mt-4 max-w-[46ch] text-bone-dim">
-          A person watches every submission, usually within six hours. If it is approved,{" "}
+          A person watches every submission. If it is approved,{" "}
           {pay.flat.toFixed(2)} {site.token} is sent to your wallet on {site.chain} and the
           transaction appears in the public ledger.
         </p>
