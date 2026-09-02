@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { CountUp, Reveal } from "@/components/motion";
 import { SectionHead } from "@/components/section-head";
-import { payouts as samplePayouts, site, type Payout } from "@/lib/site";
+import { firstUpload, payouts as samplePayouts, site, type Payout } from "@/lib/site";
 
 const short = (h: string) => `${h.slice(0, 6)}…${h.slice(-4)}`;
 
@@ -25,7 +25,20 @@ export function Ledger() {
       .then((r) => (r.ok ? r.json() : null))
       .then((data: { payouts?: (Payout & { paidAt: string })[] } | null) => {
         if (!alive || !data?.payouts?.length) return;
-        setPayouts(data.payouts.map((p) => ({ ...p, when: ago(p.paidAt) })));
+        const rows: Payout[] = data.payouts.map((p) => ({ ...p, when: ago(p.paidAt) }));
+
+        // the kick-off bonus is a real transfer too, just not a submission of
+        // its own — it belongs in the record next to the clip it was paid for
+        const first = rows[rows.length - 1];
+        rows.unshift({
+          task: `First-clip bonus · ${first.task.toLowerCase()}`,
+          seconds: first.seconds,
+          amount: firstUpload.bonus,
+          hash: firstUpload.bonusHash,
+          when: first.when,
+        });
+
+        setPayouts(rows);
       })
       .catch(() => {});
     return () => {
@@ -55,8 +68,8 @@ export function Ledger() {
             <CountUp to={total} prefix="$" decimals={2} className="tnum" />
           </div>
           <div className="eyebrow mt-2">
-            {payouts.length} {payouts.length === 1 ? "clip" : "clips"} · {site.token} on{" "}
-            {site.chain}
+            {payouts.length} {payouts.length === 1 ? "payment" : "payments"} · {site.token}{" "}
+            on {site.chain}
           </div>
         </Reveal>
       </div>
