@@ -94,17 +94,18 @@ export function HeroTech({
               delay={0.08}
               className="mt-7 font-display text-[clamp(2.35rem,5.2vw,4.4rem)] leading-[1.02]"
               lines={[
-                <Fragment key="a">Film 30 seconds of</Fragment>,
-                <Fragment key="b">an everyday chore.</Fragment>,
-                <Fragment key="c">
-                  <span className={skin.gradient}>Get paid</span> for it.
+                <Fragment key="a">Get paid to</Fragment>,
+                <Fragment key="b">
+                  <span className={skin.gradient}>train a robot</span>
                 </Fragment>,
+                <Fragment key="c">to do your chores.</Fragment>,
               ]}
             />
 
             <Reveal delay={0.26} className="mt-6 max-w-[44ch] text-[1.25rem] leading-snug text-bone">
               <p>
-                Your clip becomes training data for a robot&apos;s hands.
+                Film 30 seconds of an everyday task. That clip teaches a robot&apos;s
+                hands how to do it.
               </p>
             </Reveal>
 

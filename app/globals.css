@@ -361,7 +361,7 @@ body::after {
 [data-variant="mono"] ::selection { background: #f4f3f1; color: #050505; }
 .text-mercury {
   /* keep every stop bright — this sits on the words that carry the offer */
-  background: linear-gradient(102deg, #ffffff 0%, #dedbd5 38%, #ffffff 64%, #cbc8c2 100%);
+  background: linear-gradient(102deg, #ffffff 0%, #ece9e3 36%, #ffffff 62%, #dcd9d3 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
