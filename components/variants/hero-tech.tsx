@@ -94,28 +94,27 @@ export function HeroTech({
               delay={0.08}
               className="mt-7 font-display text-[clamp(2.35rem,5.2vw,4.4rem)] leading-[1.02]"
               lines={[
-                <Fragment key="a">Get paid to</Fragment>,
-                <Fragment key="b">
-                  <span className={skin.gradient}>train a robot</span>
+                <Fragment key="a">Robots have learned</Fragment>,
+                <Fragment key="b">to walk. What they</Fragment>,
+                <Fragment key="c">
+                  need next is <span className={skin.gradient}>your hands</span>.
                 </Fragment>,
-                <Fragment key="c">to do your chores.</Fragment>,
               ]}
             />
 
             <Reveal delay={0.26} className="mt-6 max-w-[44ch] text-[1.25rem] leading-snug text-bone">
               <p>
-                Film 30 seconds of an everyday task. That clip teaches a robot&apos;s
-                hands how to do it.
+                Film an everyday task from your point of view and get paid for it.
               </p>
             </Reveal>
 
             <Reveal delay={0.34} className="mt-5 max-w-[48ch] text-[1.0625rem] leading-relaxed text-bone-dim">
               <p>
-                Humanoids are close to walking and nowhere near loading a dishwasher.
-                Manipulation is learned by watching human hands, and the footage that
-                teaches it — real homes, bad light, one continuous task — barely exists.
-                Automata buys it, clip by clip, and pays you in USDG the moment a
-                reviewer approves yours.
+                Manipulation — approach, grasp, adjust, release — is learned by watching
+                human hands, and the footage that teaches it barely exists: real homes,
+                bad light, one continuous task. Automata buys that footage clip by clip.
+                A person reviews every submission, and approved ones are paid in USDG
+                the same day.
               </p>
             </Reveal>
 
