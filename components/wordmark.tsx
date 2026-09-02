@@ -12,12 +12,12 @@ export function Wordmark({ className = "" }: { className?: string }) {
       style={{ lineHeight: 1 }}
     >
       <Image
-        src="/mark.png"
+        src="/mark-head.png"
         alt=""
         width={256}
         height={256}
         priority
-        className="mark h-[1.4em] w-[1.4em] shrink-0"
+        className="mark h-[1.75em] w-[1.75em] shrink-0"
       />
       <span
         className="font-display font-bold uppercase"
