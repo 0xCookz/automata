@@ -95,9 +95,9 @@ export function HeroTech({
               className="mt-7 font-display text-[clamp(2.35rem,5.2vw,4.4rem)] leading-[1.02]"
               lines={[
                 <Fragment key="a">Robots have learned</Fragment>,
-                <Fragment key="b">to walk. What they</Fragment>,
+                <Fragment key="b">to walk. Now they</Fragment>,
                 <Fragment key="c">
-                  need next is <span className={skin.gradient}>your hands</span>.
+                  need <span className={skin.gradient}>your hands</span>.
                 </Fragment>,
               ]}
             />
@@ -158,7 +158,7 @@ export function HeroTech({
 
           {/* the unit, on its own instrument panel */}
           <div className="col-span-12 lg:col-span-5">
-            <Reveal delay={0.2} className="panel relative border border-line">
+            <Reveal delay={0.2} className="panel panel-void relative border border-line">
               <div
                 aria-hidden
                 className="pointer-events-none absolute left-1/2 top-1/3 h-56 w-56 -translate-x-1/2 rounded-full opacity-40 blur-[70px]"

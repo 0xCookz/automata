@@ -93,18 +93,8 @@ export function UnitViewport({
       <div
         ref={ref}
         className="absolute inset-x-0 bottom-0 top-[6%]"
-        style={
-          still
-            ? undefined
-            : {
-                mixBlendMode: "screen",
-                // feather the clip's own frame so no rectangle shows
-                WebkitMaskImage:
-                  "radial-gradient(78% 78% at 50% 52%, #000 62%, transparent 100%)",
-                maskImage:
-                  "radial-gradient(78% 78% at 50% 52%, #000 62%, transparent 100%)",
-              }
-        }
+        /* no blending: the clip is graded to true black and the panel behind
+           it is painted the same black, so there is nothing to hide */
       >
         {still ? (
           <Image

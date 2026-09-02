@@ -453,3 +453,9 @@ body::after {
 /* the mark is drawn in white; invert it on the light directions */
 [data-variant="paper"] .mark,
 [data-variant="product"] .mark { filter: invert(1); }
+
+/* The hero's unit panel is painted the same pure black as the clip inside it,
+   so the video has no visible frame — the glass treatment stays on the header
+   and readout rows via the border and the inset highlight. */
+[data-variant] .panel.panel-void,
+.panel.panel-void { background: #000; }
