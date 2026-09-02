@@ -7,7 +7,7 @@ const description =
   "Automata buys first-person footage of everyday chores to train humanoid robot manipulation. Record 5 to 30 seconds from your own eyeline, a person reviews it, and approved clips are paid in USDG on Robinhood Chain.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://automata.build"),
+  metadataBase: new URL("https://tryautomata.app"),
   title: {
     default: title,
     template: "%s — Automata",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    url: "https://automata.build",
+    url: "https://tryautomata.app",
     siteName: "Automata",
     title,
     description,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     images: ["/og.jpg"],
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://automata.build" },
+  alternates: { canonical: "https://tryautomata.app" },
 };
 
 const structuredData = {

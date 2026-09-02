@@ -1,11 +1,11 @@
 /**
  * Single source of truth for copy + sample data.
- * Swap `payouts` for a real feed once the review backend exists.
+ * Copy and rates only — every number the site shows comes from the database.
  */
 
 export const site = {
   name: "Automata",
-  domain: "automata.build",
+  domain: "tryautomata.app",
   chain: "Robinhood Chain",
   token: "USDG",
   explorerTx: "https://robinhoodchain.blockscout.com/tx/",
