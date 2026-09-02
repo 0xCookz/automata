@@ -2,6 +2,7 @@
 
 import { Fragment, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { ContractBadge } from "@/components/contract-badge";
 import { MaskLines, Reveal } from "@/components/motion";
 import { stats } from "@/lib/site";
 
@@ -149,7 +150,11 @@ export function HeroTech({
               </a>
             </Reveal>
 
-            <Reveal delay={0.52} stagger={0.07} className="mt-10 grid gap-px border-t border-line pt-6 sm:grid-cols-3">
+            <Reveal delay={0.5} className="mt-6">
+              <ContractBadge />
+            </Reveal>
+
+            <Reveal delay={0.56} stagger={0.07} className="mt-10 grid gap-px border-t border-line pt-6 sm:grid-cols-3">
               {loop.map(([n, title, detail]) => (
                 <div key={n} className="sm:pr-5">
                   <div className="flex items-baseline gap-2.5">
