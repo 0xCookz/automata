@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { ContractBadge } from "@/components/contract-badge";
 import { MaskLines, Reveal } from "@/components/motion";
 import { site } from "@/lib/site";
 
@@ -52,6 +53,10 @@ export function Cta() {
               />
             </svg>
           </a>
+        </Reveal>
+
+        <Reveal delay={0.5} className="mt-10 flex justify-center">
+          <ContractBadge />
         </Reveal>
       </div>
     </section>

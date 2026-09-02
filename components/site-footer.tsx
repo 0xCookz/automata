@@ -1,3 +1,4 @@
+import { ContractBadge } from "@/components/contract-badge";
 import { Wordmark } from "@/components/wordmark";
 import { nav, site } from "@/lib/site";
 
@@ -48,7 +49,11 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-bone-faint sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-14 border-t border-line pt-8">
+        <ContractBadge />
+      </div>
+
+      <div className="mt-8 flex flex-col gap-3 pt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-bone-faint sm:flex-row sm:items-center sm:justify-between">
         <span>© {new Date().getFullYear()} {site.name}</span>
         <span>
           Paid in {site.token} on {site.chain}

@@ -9,6 +9,13 @@ export const site = {
   chain: "Robinhood Chain",
   token: "USDG",
   explorerTx: "https://robinhoodchain.blockscout.com/tx/",
+  explorerToken: "https://robinhoodchain.blockscout.com/token/",
+  /** The project token. Clip payouts are in USDG; this is separate. */
+  contract: {
+    ticker: "AUTO",
+    name: "TryAutomata",
+    address: "0xf1FbAAF2Ed6fD0856042a2fEb7756C98a0c5EfeC",
+  },
   social: {
     x: "https://x.com/TryAutomata",
     handle: "@TryAutomata",
