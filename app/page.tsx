@@ -2,6 +2,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { HeroTech, type HeroTechSkin } from "@/components/variants/hero-tech";
 import { Uploads } from "@/components/sections/uploads";
+import { AppSoon } from "@/components/sections/app-soon";
 import { Ticker } from "@/components/sections/ticker";
 import { How } from "@/components/sections/how";
 import { Why } from "@/components/sections/why";
@@ -33,6 +34,7 @@ export default function Page() {
       <main id="main">
         <HeroTech skin={steelSkin} unit="figure" />
         <Uploads />
+        <AppSoon />
         <Ticker />
         <Why />
         <How />
